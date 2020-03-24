@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 let mediaSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: 'you must enter a firstname'
+        required: 'you must enter a name'
     },
-    type: {
+    equipe: {
         type: String,
-        required: 'enter a email'
+        required: 'entrez une equipe ou \'aucune\''
     },
     chemin: {
         type: String,

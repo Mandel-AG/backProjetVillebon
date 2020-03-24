@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>Mon title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+  <div class="container-fluid">
+    <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
+      <h1> Ajouter Media </h1>
+
+      <form class="d-flex flex-column card w-50" method="post" action="/media" >
+        <div class="card-body">
+          <div class="form-group">
+            <label>Name</label>
+            <input name="name" class="form-control" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Type</label>
+            <input name="type" class="form-control" type="text" />
+          </div>
+          <div class="form-group">
+            <label>Chemin</label>
+            <input name="chemin" class="form-control" type="text" />
+          </div> 
+          <div>
+            <input type="submit" value="Submit" class="btn btn-primary" />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

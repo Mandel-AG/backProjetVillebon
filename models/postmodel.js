@@ -2,23 +2,34 @@ const mongoose = require('mongoose');
 
 let postSchema = new mongoose.Schema({
     title: {
-        type: 'string',
+        type: String,
         required: 'you must enter a firstname'
     },
     description: {
-        type: 'string',
+        type: String,
         required: 'enter a email'
     },
-    type: {
-        type: 'string',
+    typePost: {
+        type: String,
+        require: "Entrez equipe ou annonce"
     },
     media: {
-        type:'string',
+        type: String,
         ref: 'media'
+    },
+    index : {
+        type : Number,
     }
 
 },{
     timestamps:true
 });
 
-module.exports = mongoose.model('Post', postSchema);
+
+postSchema.pre('save', function(){
+    return Post.countDocuments().exec().then((nb)=>{this.index = nb + 1})
+})
+
+const Post = mongoose.model('Post', postSchema);
+
+module.exports = Post;
