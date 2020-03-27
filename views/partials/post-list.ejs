@@ -1,0 +1,13 @@
+<h2> <%= filtre %> </h2>
+
+<% posts.forEach(function(post){ %>
+    <ul>
+            <li id='idElement' class='list-group-item active'><%= post.id %></li> 
+            <li class='list-group-item'>title :<%= post.title %></li> 
+            <li class='list-group-item'>description : <%= post.description %></li> 
+            <li class='list-group-item'>type :<%= post.typePost %></li> 
+            <li class='list-group-item'>media :<%= post.media %></li> 
+            <li class='list-group-item'>time :<%= post.createdAt %></li> 
+            <button id='delete' type='button' class="btn btn-danger w-25" postid= <%- post._id %> > Delete </button>
+    </ul>
+    <% }) %>

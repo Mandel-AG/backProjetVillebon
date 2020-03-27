@@ -1,14 +1,34 @@
 const Post = require('../models/postmodel')
+const{getPostsQuery, getFilteredPost, searchPostQuery, createPostQuery, deletePostsQuery, deletePostQuery } = require('../queries/posts.queries')
+
+
+
 
 exports.getPost = async (req,res) => {
     try{
-        const post = await Post.find({}).exec()
-        res.send(post)
+        const posts = await getPostsQuery()
+        res.render('posts',{posts, filtre:'Tous'})
     }
     catch(e){
         console.log(e)
     }
 }
+
+
+
+exports.filteredPosts = async(req,res)=>{
+    try{
+        const filtre = req.params.type
+        console.log(filtre, 'filtre')
+        const posts = await getFilteredPost(filtre)
+        res.render('posts', {posts, filtre})
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
+
 
 exports.createPost = async (req,res)=>{
     let post = new Post({
@@ -19,9 +39,8 @@ exports.createPost = async (req,res)=>{
         unique:true
     })
     try{
-       const newpost = await post.save()
-       res.redirect('/') 
-       return newpost
+       const newpost = await createPostQuery(post)
+       res.redirect('/posts/add') 
     }
     catch(e){
        console.log(e) 
@@ -50,7 +69,7 @@ exports.updatePost = async(req,res) =>{
 // Delete plusieurs Posts
 exports.deleteManyPosts = async (req,res) =>{
     try{
-        const post = await Post.deleteMany({}).exec()
+        const post = await deletePostsQuery()
         res.send(post)
     }
     catch(e){
@@ -59,11 +78,25 @@ exports.deleteManyPosts = async (req,res) =>{
 }
 
 
+
 // Delete 1 Post
 exports. deletePost = async (req,res)=>{
     try{
-        const deletedPost = await Post.deleteOne({_id:req.params.id}).exec()
-        res.send(deletedPost)
+        const postId = req.params.id
+        await deletePostQuery(postId)
+        const posts = await getPostsQuery()
+        res.render('partials/post-list', {posts})
+    }
+    catch(e){
+        console.log(e)
+    }
+}
+
+exports.postSearch = async(req,res)=>{
+    try{
+        const postQuery = req.query.reqt
+        const posts = await searchPostQuery(postQuery)
+        res.render('partials/post-list', {posts} )
     }
     catch(e){
         console.log(e)

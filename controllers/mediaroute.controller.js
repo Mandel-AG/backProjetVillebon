@@ -1,5 +1,6 @@
 const Media = require('../models/mediamodel')
 const Post = require('../models/postmodel')
+const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery, deleteMediasQuery} = require('../queries/medias.queries')
 
 
 
@@ -9,14 +10,14 @@ exports.createMedia = async(req,res)=>{
         const post = await Post.findOne({}).exec()
         let media = new Media({
             name:req.body.name,
-            type:req.body.type,
+            equipe:req.body.equipe,
             chemin:req.body.chemin,
             post: post._id,
             unique:true
         })
         
-        const newmedia = await media.save()
-        res.redirect('/medi')
+        const newmedia = createMediaQuery(media)
+        res.redirect('/medias/add')
     }
     catch(e){
         console.log(e)
@@ -27,13 +28,12 @@ exports.createMedia = async(req,res)=>{
 // Read media
 exports.getMedias = async(req,res) => {
     try{
-        const media = await Media.find({}).populate('post').exec()
-        res.send(media)
+        const medias = await getMediasQuery()
+        res.render('medias',{medias})
     }catch(e){
         console.log(e)
     }
 }
-
 
 // Update media
 exports.updateMedia = async(req, res)=>{
@@ -50,7 +50,7 @@ exports.updateMedia = async(req, res)=>{
 // Delete plusieurs Media
 exports.deleteManyMedias = async(req,res)=>{
     try{
-        const media = await Media.deleteMany({}).exec()
+        const media = await deleteMediasQuery()
         res.send(media)
     }
     catch(e){
@@ -63,8 +63,10 @@ exports.deleteManyMedias = async(req,res)=>{
 // Delete 1 Media
 exports.deleteMedia = async (req,res)=>{
     try{
-        const media = await Media.deleteOne({_id:req.params.id}).exec()
-        res.send(media)
+        const mediaId = req.params.id
+        await deleteMediaQuery(mediaId)
+        const medias = await getMediasQuery()
+        res.render('partials/media-list', {medias})
     }
     catch(e){
         console.log(e)

@@ -1,5 +1,11 @@
 const app = require('express').Router()
-const { createAdmin, getAdmin, updateAdmin, deleteAdmin } = require('../controllers/admin.controller')
+const { createAdmin, getAdmins, updateAdmin, deleteAdmin, deleteAdmins } = require('../controllers/admin.controller')
+
+
+
+// Read Admin
+app.get('/', getAdmins)
+
 
 
 // Create Admin
@@ -7,18 +13,17 @@ app.post('/',createAdmin)
 
 
 
-// Read Admin
-app.get('/', getAdmin)
-
-
-
 // Update Admin
-app.put('/:id', updateAdmin)
+app.post('/updateAdmin/:id', updateAdmin)
 
 
+// Delete Admins
+app.delete('/:id', deleteAdmin)
 
-// Delete Admin
-app.delete('/', deleteAdmin)
+
+//delete plusieurs Admins
+app.delete('/deleteAll', deleteAdmins)
+
 
 
 module.exports = app;

@@ -3,15 +3,14 @@ const mongoose = require('mongoose');
 let postSchema = new mongoose.Schema({
     title: {
         type: String,
-        required: 'you must enter a firstname'
+        required: 'you must enter a title'
     },
     description: {
-        type: String,
-        required: 'enter a email'
+        type: String
     },
     typePost: {
         type: String,
-        require: "Entrez equipe ou annonce"
+        require: "enter a typePost (actus, club ou equipe)"
     },
     media: {
         type: String,

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/postlist.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <button id='retour' class="btn btn-dark" type="button"> Retour </button> 
+    <h1 class='card-header text-center mb-5'>Admin</h1>
+
+    <div class="list-group w-100 d-flex flex-wrap flex-row justify-content-center text-center">
+        <h3>Liste</h3>
+        <div class="list-group w-50 d-flex elements" id="adminsList">
+            <%- include('partials/admins-list.ejs', {admins}) %>
+        </div>
+    </div>
+
+
+    <div class="card w-25">
+        <label class="card-title text-center">Add admin</label>
+        <button id='addadmin' class="btn btn-warning" type="button"> Allez </button> 
+    </div>
+    <script type="text/javascript" src="javascript/admin.js" ></script>
+
+</body>
+</html>

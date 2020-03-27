@@ -7,7 +7,10 @@ let mediaSchema = new mongoose.Schema({
     },
     equipe: {
         type: String,
-        required: 'entrez une equipe ou \'aucune\''
+        required: 'enter a team or \'aucune\''
+    },
+    description: {
+        type: String,
     },
     chemin: {
         type: String,

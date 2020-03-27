@@ -17,5 +17,9 @@ app.delete('/',deleteManyMedias)
 // Delete 1 Media
 app.delete('/:id',deleteMedia)
 
+//view add media
+app.get('/add', (req,res)=>{
+    res.render('addmedia')
+})
 
 module.exports = app;
