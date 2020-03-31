@@ -9,7 +9,7 @@ app.post('/', createMedia)
 app.get('/',getMedias)
 
 // Update media
-app.put('/:id', updateMedia)
+app.post('/:id', updateMedia)
 
 // Delete plusieurs Media
 app.delete('/',deleteManyMedias)

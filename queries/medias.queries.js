@@ -23,3 +23,9 @@ exports.deleteMediaQuery = (mediaId) =>{
 exports.deleteMediasQuery = () =>{
     return Media.deleteMany({}).exec()
 }
+
+
+exports.updateMediaQuery = (mediaId, newMedia) =>{
+    return Media.findByIdAndUpdate(mediaId,{$set:newMedia}, {runValidators:true}).exec()
+}
+

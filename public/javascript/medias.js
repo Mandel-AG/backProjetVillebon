@@ -1,7 +1,6 @@
 window.addEventListener('DOMContentLoaded', ()=>{
 
     const retour = document.querySelector('#retour');
-    const id = document.querySelectorAll('#idElement');
 
 
 
@@ -9,25 +8,32 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 
 
-    for(const idElement of id){
-        idElement.addEventListener('click', function(){
-            const idMedia = this.textContent;
-            if (confirm('Voulez-vous modifier ce Media ?') ){
-                window.location = `http://localhost:3004/post/update/${idMedia}`;
-            } 
-        })
-    }
-
+    
 
     retour.addEventListener('click', ()=>{
         window.location = 'http://localhost:3004/accueil'
         console.log('e')
     })
 
+
+    updatemedia()
     processDelete();
 
 })
 
+updatemedia = () =>{
+    const id = document.querySelectorAll('#idElement');
+
+    for(const idElement of id){
+        idElement.addEventListener('click', function(){
+            const idMedia = this.textContent;
+            if (confirm('Voulez-vous modifier ce Media ?') ){
+                window.location = `http://localhost:3004/editMedia/${idMedia}`;
+            } 
+        })
+    }
+
+}
 
 
 processDelete = ()=>{
@@ -41,6 +47,7 @@ processDelete = ()=>{
                 .then( res => {
                     mediasList.innerHTML = res.data;
                     processDelete();
+                    deletemedia();
                 })
         })
 })

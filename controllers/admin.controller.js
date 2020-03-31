@@ -1,4 +1,3 @@
-const Admin = require('../models/adminmodel');
 const {getAdminsQuery, deleteAdminsQuery, deleteAdminQuery, createAdminQuery, updateAdminQuery} = require('../queries/admin.queries')
 
 
@@ -6,18 +5,16 @@ const {getAdminsQuery, deleteAdminsQuery, deleteAdminQuery, createAdminQuery, up
 // Create Admin
 exports.createAdmin = async(req,res) =>{
     try{
-        let admin = new Admin({
-            email:req.body.email,
-            password:req.body.password,
-            unique:true
-        })
-        const newadmin = await createAdminQuery(admin)
+        const body = req.body;
+        const admin = await createAdminQuery(body);
+        req.login(admin)
         res.status(200).redirect('/admins')
     }
     catch(e){
         console.log(e)
     }
 }
+
 
 
 // Read Admin
@@ -35,13 +32,10 @@ exports.getAdmins = async(req,res)=> {
 // Update Admin
 exports.updateAdmin = async(req,res)=> {
     try{
-        const adminId = req.params.id
-        let newEmail = req.body.email
-        console.log(req.body, 'req.body')
+        const adminId = req.params.id;
+        let newEmail = req.body;
         await updateAdminQuery(adminId, newEmail)
-        // res.send(updatedAdmin)
-        // res.render('updateadmin', {updatedAdmin})
-        res.redirect('admins')
+        res.redirect('/admins')
     }
     catch(e){
         console.log(e)
@@ -71,4 +65,11 @@ exports.deleteAdmin = async(req,res) => {
     catch(e){
         console.log(e)
     }
+}
+
+
+
+exports.signOut = (req,res,next)=>{
+    req.logout();
+    res.redirect('/')
 }

@@ -38,8 +38,10 @@ exports.getMedias = async(req,res) => {
 // Update media
 exports.updateMedia = async(req, res)=>{
        try{
-        const updatemedia = await Media.findOneAndUpdate({_id:req.params.id},{$set:{name:req.body.name, type:req.body.type, chemin:req.body.chemin}}, {new:true}).exec()
-        res.send(updatemedia)
+           const mediaid = req.params.id
+           const newmedia = req.body
+         await updateMediaQuery(mediaid, newmedia)
+        res.redirect('/medias')
        } 
        catch(e){
            console.log(e)

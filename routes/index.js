@@ -1,91 +1,90 @@
 const app = require('express').Router()
+const { findAdminPerEmail } = require('../queries/admin.queries')
 const Admin =  require('../models/adminmodel')
 const Post = require('../models/postmodel')
 const Media = require('../models/mediamodel')
 const postRoutes = require('./postroutes')
 const mediaRoutes = require('./mediaroutes')
 const adminRoutes = require('./adminroutes')
+const { ensureAuthentification } = require('../config/security.config')
 
-app.use('/posts', postRoutes )
-app.use('/medias', mediaRoutes)
-app.use('/admins', adminRoutes)
+
+app.use('/posts', ensureAuthentification, postRoutes )
+app.use('/medias', ensureAuthentification,  mediaRoutes)
+app.use('/admins', ensureAuthentification, adminRoutes)
 
 
 
 app.get('/', (req,res)=>{
-    res.render('login')
+    res.render('login', { error : null })
+})
+
+
+
+
+app.get('/accueil', ensureAuthentification, (req,res)=>{
+    res.render('accueil')
+})
+
+
+
+
+
+
+app.get('/editAdmin/:id', async(req,res)=>{
+    try{ 
+        const admin = await Admin.findById({_id :req.params.id}).exec()
+        res.render('updateadmin', {admin})
+    }
+    catch(e){
+        console.log(e)
+    }
+})
+
+
+app.get('/editPost/:id', async(req,res)=>{
+    try{ 
+        const post = await Post.findById({_id :req.params.id}).exec()
+        res.render('updatepost', {post})
+    }
+    catch(e){
+        console.log(e)
+    }
+})
+
+
+app.get('/editMedia/:id', async(req,res)=>{
+    try{ 
+        const media = await Media.findById({_id :req.params.id}).exec()
+        res.render('updatemedia', {media})
+    }
+    catch(e){
+        console.log(e)
+    }
 })
 
 
 // Login
-app.post('/admin/login', function(req,res){
-    Admin.findOne({}).exec()
-        .then(user => {
-            if(user.email === req.body.email){
-                res.send(user)
-                // res.redirect('/list')
+app.post('/admin/login', async(req,res,next)=>{
+    try{
+        const { email , password } = req.body;
+        const admin = await findAdminPerEmail(email);
+        if (admin){
+            const match = await admin.comparePassword(password)
+            if(match){
+                req.login(admin);
+                res.status(200).redirect('/accueil')
+            } else {
+                res.render('login', { error : 'Wrong Password'})
             }
-            else(res.send('la data est vide'))
-        })
-        .catch(err => res.send(err))
-})
-
-
-
-app.get('/accueil', (req,res)=>{
-    res.render('accueil')
-})
-
-app.get('/admin/add',(req, res)=>{
-    res.render('addadmin')
-})
-
-app.get('/editAdmin/:id', async(req,res)=>{
-    try{ 
-        const admin = await Admin.findOne({_id :req.params.id}).exec()
-        res.render('updateadmin', {admin:admin})
+        } else {
+            res.render('login', { error : 'User not Found'})
+        }
     }
     catch(e){
-        console.log(e)
+        next(e);
     }
 })
-
-
-app.get('/actus', async(req,res)=>{
-    try{ 
-        const posts = await Post.find({typePost: 'actus'}).exec()
-        const media = await Media.find({post: posts.id}).exec()
-        res.render('actus', {posts, media})
-    }
-    catch(e){
-        console.log(e)
-    }
-})
-
-
-app.get('/equipes', async(req,res)=>{
-    try{ 
-        const posts = await Post.find({typePost:'equipe'}).populate().exec()
-        res.render('equipes', {posts})
-
-    }
-    catch(e){
-        console.log(e)
-    }
-})
-
-
-app.get('/club', async(req,res)=>{
-    try{ 
-        const posts = await Post.find({typePost:'club'}).populate().exec()
-        res.render('club', {posts})
-
-    }
-    catch(e){
-        console.log(e)
-    }
-})
-
 
 
 

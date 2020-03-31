@@ -29,3 +29,9 @@ exports.deletePostsQuery = () =>{
 exports.deletePostQuery = (postId) =>{
     return Post.findByIdAndDelete(postId).exec()
 }
+
+
+exports.updatePostQuery = (postId, newpost) =>{
+    return Post.findByIdAndUpdate(postId, 
+        {$set: newpost}, {runValidators:true}).exec()
+}

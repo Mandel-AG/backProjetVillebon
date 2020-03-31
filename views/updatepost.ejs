@@ -9,32 +9,29 @@
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
       <h1> Modifier post </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/posts/:id" >
+      <form class="d-flex flex-column card w-50" method="post" action="/posts/<%= post._id %>" >
         <div class="card-body">
-
-          <% if (media) { %>
-
             <div class="form-group">
               <label>Title</label>
-              <input name="title" class="form-control" type="text" value="<% post.title %>" />
+              <input name="title" class="form-control" type="text" value="<%= post.title %>" />
             </div>
 
             <div class="form-group">
               <label>Description</label>
-              <input name="description" class="form-control" type="text" />
-            </div>
-
-            <div class="form-group">
-              <label>postType</label>
-              <input name="postType" class="form-control" type="text" />
+              <input name="description" class="form-control" value="<%= post.description %>" type="text" />
             </div>
 
             <div class="form-group">
               <label>Media</label>
-              <input name="media" class="form-control" type="text" />
+              <input name="media" class="form-control"  />
             </div>
 
-          <% } %>
+            <select class='btn btn-primary list-group mb-2' name="typePost">
+              <option value="">--Please choose an option--</option>
+              <option class='list-group-item text-body' value="equipe">Equipe</option>
+              <option class='list-group-item text-body' value="actus">Actus/Events</option>
+              <option class='list-group-item text-body' value="club">Club</option>
+          </select>
           
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />

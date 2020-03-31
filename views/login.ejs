@@ -2,31 +2,37 @@
 <head>
   <title>Mon title</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script type="text/javascript" src="/javascript/login.js" ></script>
 </head>
 <body>
   <div class="container-fluid d-flex align-items-center flex-column">
 
     <div class='card-header card w-75 d-flex align-items-center text-center'>
         <label class="card w-50">New Admin</label>
-        <input class='btn btn-primary w-25' type='button' value ='Go to register'/>
+        <a class='btn btn-primary w-25' href="/admin/add"> Go to Register</a>
     </div>
 
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
       <h1> Login </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/post" >
+      <form class="d-flex flex-column card w-50" method="post" action="/admin/login" >
         <div class="card-body">
 
           <div class="form-group">
             <label>email</label>
-            <input name="email" class="form-control" type="text" />
+            <input name="email" class="form-control" type="email" />
           </div>
 
           <div class="form-group">
-            <label>description</label>
-            <input name="password" class="form-control" type="text" />
+            <label>password</label>
+            <input name="password" id="password" class="form-control"  type="password" />
           </div>
 
+          
+            <% if (error){ %>
+              <div> <%- error %> </div>
+            <% } %>
+          
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />
           </div>

@@ -1,11 +1,8 @@
 window.addEventListener('DOMContentLoaded', function(){
     const retour = document.querySelector('#retour');
-    const id = document.querySelectorAll('#idElement');
     let input = document.querySelector('#input')
     
-    
-    
-    
+     
 
     input.addEventListener('input',function(event){
         try{
@@ -19,15 +16,6 @@ window.addEventListener('DOMContentLoaded', function(){
         
     })
     
-    for(const idElement of id){
-        idElement.addEventListener('click', function(){
-            const idPost = this.textContent;
-            if( confirm('Voulez-vous modifier ce Post ?') ){
-                window.location = `http://localhost:3004/post/update/${idPost}`; 
-            }
-        })
-    }
-
 
     retour.addEventListener('click', ()=>{
         window.location = 'http://localhost:3004/accueil'
@@ -35,9 +23,25 @@ window.addEventListener('DOMContentLoaded', function(){
     })
 
     processDelete();
-
+    updatepost();
 
 })
+
+updatepost = ()=>{
+    const id = document.querySelectorAll('#idElement');
+
+    for(const idElement of id){
+        idElement.addEventListener('click', function(){
+            const idPost = this.textContent;
+            if( confirm('Voulez-vous modifier ce Post ?') ){
+                window.location = `http://localhost:3004/editPost/${idPost}`; 
+            }
+        })
+    }
+}
+
+
+
 
 processDelete = () =>{
     const postList = document.querySelector('#postList');
@@ -51,6 +55,7 @@ processDelete = () =>{
                  .then( res => { 
                      postList.innerHTML = res.data;
                      processDelete();
+                     updatepost();
                  })
                  .catch(e =>{ console.log(e) })
         })

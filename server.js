@@ -3,8 +3,14 @@ mongoose = require('mongoose'),
 cors = require('cors')
 const path = require('path')
 const routing = require('./routes')
+const cookieParser= require('cookie-parser')
 
 const app = express();
+exports.app = app;
+
+
+app.use(cookieParser());
+require('./config/jwt.config')
 
 app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))

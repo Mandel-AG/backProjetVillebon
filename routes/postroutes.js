@@ -16,6 +16,9 @@ app.get('/type/:type',filteredPosts )
 
 
 
+
+app.get('/editPost/:id', updatePost)
+
 // Create post 
 app.post('/',createPost)
 
@@ -24,7 +27,7 @@ app.delete('/:id', deletePost)
 
 
 // Update post
-app.put('/:id', updatePost)
+app.post('/:id', updatePost)
 
 
 // Delete plusieurs Posts

@@ -2,7 +2,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
     const retour = document.querySelector('#retour');
     const addadmin = document.getElementById('addadmin')
     const id = document.querySelectorAll('#adminId');
-
+    const password = document.querySelector('#password')
 
 
 
@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 
     addadmin.addEventListener('click',()=>{
-        window.location = 'http://localhost:3004/admin/add'
+        window.location = 'http://localhost:3004/admins/add'
     })
 
     processDelete();
@@ -38,12 +38,17 @@ processDelete = ()=>{
 
     deleteButton.forEach(button =>{
         button.addEventListener('click',(event)=>{
-            const adminId = event.target.getAttribute('adminid');
-            axios.delete('/admins/' + adminId)
-                .then( response =>{
-                    adminsList.innerHTML = response.data;
-                    processDelete();
-                })
+             if (confirm('Voulez-vous supprimer cet Admin ?')){
+                const adminId = event.target.getAttribute('adminid');
+                axios.delete('/admins/' + adminId)
+                    .then( response =>{
+                        adminsList.innerHTML = response.data;
+                        processDelete();
+                    })
+             }
+             else{
+                 null
+             }
         })
     })
 }

@@ -1,13 +1,15 @@
 const Post = require('../models/postmodel')
-const{getPostsQuery, getFilteredPost, searchPostQuery, createPostQuery, deletePostsQuery, deletePostQuery } = require('../queries/posts.queries')
+const{getPostsQuery, updatePostQuery, getFilteredPost, searchPostQuery, createPostQuery, deletePostsQuery, deletePostQuery } = require('../queries/posts.queries')
 
 
 
 
 exports.getPost = async (req,res) => {
     try{
-        const posts = await getPostsQuery()
-        res.render('posts',{posts, filtre:'Tous'})
+        const posts = await getPostsQuery();
+        const filtre = 'Tous'
+        console.log(filtre)
+        res.render('posts',{posts, filtre:filtre || {}})
     }
     catch(e){
         console.log(e)
@@ -18,10 +20,10 @@ exports.getPost = async (req,res) => {
 
 exports.filteredPosts = async(req,res)=>{
     try{
-        const filtre = req.params.type
+        let filtre = req.params.type
         console.log(filtre, 'filtre')
         const posts = await getFilteredPost(filtre)
-        res.render('posts', {posts, filtre})
+        res.render('posts', {posts, filtre:filtre})
     }
     catch(e){
         console.log(e)
@@ -50,15 +52,10 @@ exports.createPost = async (req,res)=>{
 
 exports.updatePost = async(req,res) =>{
     try{
-        const updatedpost = await Post.findOneAndUpdate({_id:req.params.id}, 
-            {$set: {
-            title:req.body.title, 
-            description:req.body.description,
-            typePost:req.body.typePost, 
-            media:req.body.media
-        }},{new:true}).exec()
-        res.send(updatedpost)
-        // res.render('viewaddpost')
+    const newpost = req.body;
+    const postid = req.params.id;
+        await updatePostQuery(postid, newpost)
+        res.redirect('/posts');
     }
     catch(e){
         console.log(e)
@@ -70,7 +67,7 @@ exports.updatePost = async(req,res) =>{
 exports.deleteManyPosts = async (req,res) =>{
     try{
         const post = await deletePostsQuery()
-        res.send(post)
+        res.send(post);
     }
     catch(e){
         console.log(e)
@@ -96,7 +93,8 @@ exports.postSearch = async(req,res)=>{
     try{
         const postQuery = req.query.reqt
         const posts = await searchPostQuery(postQuery)
-        res.render('partials/post-list', {posts} )
+        const filtre = posts.typePost
+        res.render('partials/post-list', {posts, filtre} )
     }
     catch(e){
         console.log(e)

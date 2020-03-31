@@ -9,25 +9,23 @@
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
       <h1> Modifier Media </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/medias/:id" >
+      <form class="d-flex flex-column card w-50" method="post" action="/medias/<%= media._id %>" >
         <div class="card-body">
-
-          <% if (media) { %>
 
             <div class="form-group">
               <label>Name</label>
-              <input name="name" class="form-control" type="text" value="<% media.name %>" />
+              <input name="name" class="form-control" type="text" value="<%= media.name %>" />
               
             </div>
 
             <div class="form-group">
               <label>Equipe</label>
-              <input name="equipe" class="form-control" type="text" />
+              <input name="equipe" class="form-control" value="<%= media.equipe %>" type="text" />
             </div>
 
             <div class="form-group">
               <label>Description</label>
-              <input name="description" class="form-control" type="text" />
+              <input name="description" class="form-control" value="<%= media.description %>" type="text" />
             </div>
 
             <div class="form-group">
@@ -36,11 +34,10 @@
             </div>
 
             <div class="form-group">
-              <label>Post</label>
-              <input name="post" class="form-control" type="text" />
+              <label>Postname</label>
+              <input name="post" class="form-control" value="<%= media.post %>" type="text" />
             </div>
 
-          <% } %>
           
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />
