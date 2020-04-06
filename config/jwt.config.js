@@ -1,11 +1,11 @@
 const secret = 'ae277e0f-8f8d-4cb2-937a-e5a81f95194e';
 const jwt = require('jsonwebtoken');
-const { findAdminPerId, findAdminPerEmail } = require('../queries/admin.queries');;
-const { app } =  require('../server')
+const { findAdminPerId } = require('../queries/admin.queries');;
+const { app } =  require('../server');
 
 
 const createToken = (user)=>{
-    const token = jwt.sign({ sub: user._id.toString() }, secret)
+    const token = jwt.sign({ sub: user._id.toString() }, secret, { expiresIn: '15d' })
     return token;
 }
 

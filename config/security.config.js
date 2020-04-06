@@ -2,6 +2,6 @@ exports.ensureAuthentification = (req, res, next)=>{
     if(req.isAuthenticated()){
         next();
     }else{
-        res.status(403).json('forbidden')
+        res.status(403).json('forbidden').redirect('/');
     }
 }

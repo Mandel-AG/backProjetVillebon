@@ -1,0 +1,29 @@
+<html>
+<head>
+  <title>Mon title</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+  <button id='retour' class="btn btn-dark" type="button"> Retour </button> 
+  <div class="container-fluid">
+    <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
+      <h1> Modifier Score </h1>
+
+      <form class="d-flex flex-column card w-50" method="post" action="/score/<%= score._id %>" ></form>
+
+        <div class="form-group" >
+            <label>Score</label>
+            <p> <select name='result' value=<%= score.result %>
+                    <option value=''> Pick a result</option>
+                    <option value='Victoire'>Victoire</option>
+                    <option value='Defaite'>Defaite</option>
+                </select> Contre <input name='equipe' type="text" value= <%= score.equipe %> /> : <input type='number' name='pointsA' value= <%= score.pointsA %> class="w-25" /> - <input type='number' class="w-25" value= <%= score.pointsB %> name='pointsB' /> 
+            </p>
+        </div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+      </form>
+    </div>
+  </div>
+  <script type="text/javascript" src="/javascript/retour.js" ></script>
+</body>
+</html>

@@ -2,7 +2,8 @@ const Media = require('../models/mediamodel')
 
 
 exports.getMediasQuery = () =>{
-    return Media.find({}).populate('post').exec()
+    return Media.find({}).exec()
+    // return Media.find({}).populate('post').exec()
 }
 
 

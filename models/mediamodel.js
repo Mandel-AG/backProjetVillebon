@@ -12,11 +12,12 @@ let mediaSchema = new mongoose.Schema({
     description: {
         type: String,
     },
-    chemin: {
+    file: {
         type: String,
     },
     post: {
-        type:{},
+        // type: {}
+        type:String,
         ref: 'Post'
     },
 

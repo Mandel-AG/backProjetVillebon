@@ -1,7 +1,7 @@
 <html>
 <head>
   <title>Mon title</title>
-  <link rel="stylesheet" href="css/postlist.css">
+  <link rel="stylesheet" href="css/accueil.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
@@ -11,40 +11,58 @@
   <div class="container-fluid">
     <h1 class='text-center card-header'>Accueil</h1>
 
-    <div class="d-flex flex-row justify-content-center border rounded"> 
-      <div class="card w-25 m-5">
+    <div class="d-flex flex-row justify-content-center border rounded element"> 
+      <div class="card rubrique m-5">
         <label class="card-title text-center">Add posts</label>
         <a id='addpost' class="btn btn-dark" type="button" href="/posts/add" > Allez </a> 
       </div>
 
-      <div class="card w-25 m-5">
+      <div class="card rubrique m-5">
         <label class="card-title text-center">Add medias</label>
         <a id='addmedia' class="btn btn-dark" type="button" href="/medias/add"> Allez </a> 
       </div>
     </div>
-        <div class="card-body d-flex flex-wrap justify-content-center align-items-center">
 
-          <div class="card w-25 m-5">
+    <div class="card rubrique m-5">
+      <label class="card-title text-center">Add score</label>
+      <a id='addscore' class="btn btn-dark" type="button" href="/score/add"> Allez </a> 
+    </div>
+  </div>
+        <div class="card-body d-flex flex-wrap justify-content-center align-items-center containerCenter">
+
+          <div class="card rubrique m-5">
             <label class="card-title text-center">Actus / Evenements</label>
-            <a id='actus' class="btn btn-primary" href="/posts/type/actus" type="button"> Allez </a> 
+            <a id='actus' class="btn btn-primary" href="/posts/type/actus" type="button"> + </a> 
           </div>
 
-          <div class="card w-25 m-5">
+          <div class="card rubrique m-5">
             <label class="card-title text-center">Equipes</label>
             <a id='equipes' class="btn btn-warning" type="button" href="/posts/type/equipe" > Allez </a> 
           </div>
 
-          <div class="card w-25 m-5">
+          <div class="card rubrique m-5">
             <label class="card-title text-center">Club</label>
             <a id='club' class="btn btn-success" type="button" href="/posts/type/club" > Allez </a> 
           </div> 
 
-          <div class="card w-25 m-5">
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Boutique</label>
+            <a id='boutique' class="btn btn-success" type="button" href="/posts/type/boutique" > Allez </a> 
+          </div>
+
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Tous les resultats</label>
+            <a id='score' class="btn btn-success" type="button" href="/score" > Allez </a> 
+          </div>
+
+          <div class="card rubrique m-5">
             <label class="card-title text-center">Tous les posts</label>
             <a id='posts' class="btn btn-success" type="button" href="/posts" > Allez </a> 
           </div>
 
-          <div class="card w-25 m-5">
+          <div class="card rubrique m-5">
             <label class="card-title text-center">Tous les medias</label>
             <a id='medias' class="btn btn-success" type="button" href="/medias" > Allez </a> 
           </div>
@@ -52,7 +70,7 @@
         </div>
     </div>
   </div>
-  <div class="card w-25 m-5">
+  <div class="card rubrique m-5">
     <label class="card-title text-center">Admins</label>
     <a id='admins' class="btn btn-success" type="button" href="/admins" > Allez </a> 
   </div>

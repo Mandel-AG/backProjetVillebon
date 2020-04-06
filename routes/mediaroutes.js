@@ -1,9 +1,19 @@
-const app = require('express').Router()
+const app = require('express').Router();
 const { createMedia, getMedias, updateMedia, deleteManyMedias, deleteMedia } = require('../controllers/mediaroute.controller')
+const multer = require('multer');
+const upload = multer({ storage: multer.diskStorage({
+    destination : (req, file, cb)=>{
+        cb(null, '/home/badel/Bureau/projetVillebonBD/files')
+    },
+    filename : (req, file, cb)=>{
+        cb(null, Date.now() + '-' + file.originalname)
+    }
+    })
+});
 
 
 // Create Media 
-app.post('/', createMedia)
+app.post('/', upload.single('file'), createMedia);
 
 // Read media
 app.get('/',getMedias)
@@ -19,7 +29,7 @@ app.delete('/:id',deleteMedia)
 
 //view add media
 app.get('/add', (req,res)=>{
-    res.render('addmedia')
+    res.render('addmedia');
 })
 
 module.exports = app;

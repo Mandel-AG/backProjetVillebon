@@ -10,9 +10,9 @@ let postSchema = new mongoose.Schema({
     },
     typePost: {
         type: String,
-        require: "enter a typePost (actus, club ou equipe)"
+        require: "enter a typePost (actus, club, equipe ou boutique)"
     },
-    media: {
+    file: {
         type: String,
         ref: 'media'
     },

@@ -7,26 +7,19 @@
   <button id='retour' class="btn btn-dark" type="button"> Retour </button> 
   <div class="container-fluid">
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
-      <h1> Ajouter Media </h1>
+      <h1> Ajouter score </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/medias" enctype="multipart/form-data" >
+      <form class="d-flex flex-column card w-50" method="post" action="/score" >
         <div class="card-body">
-          <div class="form-group">
-            <label>Name</label>
-            <input name="name" class="form-control" type="text" />
+          <div class="form-group" >
+            <label>Score</label>
+            <p> <select name='result'>
+                    <option value=''>Pick a result</option>
+                    <option value='Victoire'>Victoire</option>
+                    <option value='Defaite'>Defaite</option>
+                </select> Contre <input name='equipe' type="text" /> : <input type='number' name='pointsA' class="w-25" /> - <input type='number' class="w-25" name='pointsB' /> </p>
           </div>
-          <div class="form-group">
-            <label>Equipe</label>
-            <input name="equipe" class="form-control" type="text" />
-          </div>
-          <div class="form-group">
-            <label>Description</label>
-            <input name="description" class="form-control" type="text" />
-          </div> 
-          <div class="form-group">
-            <label>fichier</label>
-            <input name="file" class="form-control" type="file" />
-          </div> 
+           
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />
           </div>

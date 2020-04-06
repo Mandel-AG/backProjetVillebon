@@ -1,21 +1,22 @@
-const Media = require('../models/mediamodel')
-const Post = require('../models/postmodel')
-const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery, deleteMediasQuery} = require('../queries/medias.queries')
+const Media = require('../models/mediamodel');
+const Post = require('../models/postmodel');
+const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery, deleteMediasQuery} = require('../queries/medias.queries');
 
 
 
 // Create Media 
 exports.createMedia = async(req,res)=>{
     try{
-        const post = await Post.findOne({}).exec()
+        // const post = await Post.findOne({}).exec()
         let media = new Media({
             name:req.body.name,
+            description : req.body.description,
             equipe:req.body.equipe,
-            chemin:req.body.chemin,
-            post: post._id,
+            file:req.file.filename,
+            // post: post._id,
             unique:true
         })
-        
+
         const newmedia = createMediaQuery(media)
         res.redirect('/medias/add')
     }
@@ -41,7 +42,7 @@ exports.updateMedia = async(req, res)=>{
            const mediaid = req.params.id
            const newmedia = req.body
          await updateMediaQuery(mediaid, newmedia)
-        res.redirect('/medias')
+        res.redirect('/medias');
        } 
        catch(e){
            console.log(e)

@@ -1,0 +1,20 @@
+/* body{
+    display: flex;
+    flex-direction: column;
+}
+
+
+.container-fluid{
+    background-color: red;
+    display: flex;
+    flex-wrap: wrap;
+} */
+
+
+.rubrique{
+    width: 10%;
+    height: 20%;
+    border: 1px,
+    dotted red;
+
+}

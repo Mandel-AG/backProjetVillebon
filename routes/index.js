@@ -3,16 +3,18 @@ const { findAdminPerEmail } = require('../queries/admin.queries')
 const Admin =  require('../models/adminmodel')
 const Post = require('../models/postmodel')
 const Media = require('../models/mediamodel')
+const Score = require('../models/scoremodel');
 const postRoutes = require('./postroutes')
 const mediaRoutes = require('./mediaroutes')
 const adminRoutes = require('./adminroutes')
+const scoreRoute = require('./scoreroutes');
 const { ensureAuthentification } = require('../config/security.config')
 
 
 app.use('/posts', ensureAuthentification, postRoutes )
 app.use('/medias', ensureAuthentification,  mediaRoutes)
 app.use('/admins', ensureAuthentification, adminRoutes)
-
+app.use('/score', ensureAuthentification, scoreRoute)
 
 
 app.get('/', (req,res)=>{
@@ -40,6 +42,17 @@ app.get('/editAdmin/:id', async(req,res)=>{
         console.log(e)
     }
 })
+
+
+// app.get('/editScore/:id', async(req,res)=>{
+//     try{ 
+//         const score = await Score.findById({_id :req.params.id}).exec()
+//         res.render('updatescore', {score})
+//     }
+//     catch(e){
+//         console.log(e)
+//     }
+// })
 
 
 app.get('/editPost/:id', async(req,res)=>{
