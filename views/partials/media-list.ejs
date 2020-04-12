@@ -9,6 +9,7 @@
                 <li class='list-group-item'>Post title : <%= media.post.title %></li> 
             <% } %>
             <li class='list-group-item' > file : <img width='100px' src="<%= media.file %>" /> </li>
+            <li class='list-group-item'>typeMedia :<%= media.typeMedia %></li> 
             <li class='list-group-item'>time :<%= media.createdAt %></li> 
             <button id='delete' type='button' class="btn btn-danger w-25" mediaid= <%- media._id %> >Delete</button>
 

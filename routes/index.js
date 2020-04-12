@@ -8,13 +8,15 @@ const postRoutes = require('./postroutes')
 const mediaRoutes = require('./mediaroutes')
 const adminRoutes = require('./adminroutes')
 const scoreRoute = require('./scoreroutes');
-const { ensureAuthentification } = require('../config/security.config')
+const { ensureAuthentification } = require('../config/security.config');
+const { sendMail } = require('../controllers/email.controller');
 
 
-app.use('/posts', ensureAuthentification, postRoutes )
-app.use('/medias', ensureAuthentification,  mediaRoutes)
+app.use('/posts', postRoutes )
+// app.use('/medias', ensureAuthentification,  mediaRoutes)
+app.use('/medias',  mediaRoutes)
 app.use('/admins', ensureAuthentification, adminRoutes)
-app.use('/score', ensureAuthentification, scoreRoute)
+app.use('/score', scoreRoute)
 
 
 app.get('/', (req,res)=>{
@@ -29,7 +31,7 @@ app.get('/accueil', ensureAuthentification, (req,res)=>{
 })
 
 
-
+app.post('/send', sendMail)
 
 
 

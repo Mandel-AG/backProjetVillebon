@@ -8,7 +8,8 @@ exports.getPost = async (req,res) => {
         const posts = await getPostsQuery();
         const filtre = 'Tous'
         console.log(posts)
-        res.render('posts',{posts, filtre:filtre });
+        res.json(posts)
+        // res.render('posts',{posts, filtre:filtre });
         // res.render('posts',{posts, filtre:filtre || {})
     }
     catch(e){

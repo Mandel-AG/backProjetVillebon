@@ -10,10 +10,14 @@ let scoreSchema = new mongoose.Schema({
         type : Number,
         required : 'Enter a score B'
     },
-    equipe: {
+    equipeA: {
         type: String,
         required: 'enter a team'
     }, 
+    equipeB: {
+        type: String,
+        required: 'enter a team'
+    },
     result : {
         type : String,
         required : 'Enter the result'

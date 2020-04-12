@@ -13,8 +13,8 @@ exports.createMedia = async(req,res)=>{
             description : req.body.description,
             equipe:req.body.equipe,
             file:req.file.filename,
+            typeMedia: req.body.typeMedia,
             // post: post._id,
-            unique:true
         })
 
         const newmedia = createMediaQuery(media)
@@ -30,7 +30,8 @@ exports.createMedia = async(req,res)=>{
 exports.getMedias = async(req,res) => {
     try{
         const medias = await getMediasQuery()
-        res.render('medias',{medias})
+        res.json(medias)
+        // res.render('medias',{medias})
     }catch(e){
         console.log(e)
     }

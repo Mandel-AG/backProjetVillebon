@@ -5,7 +5,8 @@ exports.getScore = async (req,res) => {
     try{
         const scores = await getScoreQuery();
         console.log(scores)
-        res.render('scores',{scores});
+        res.json(scores)
+        // res.render('scores',{scores});
     }
     catch(e){
         console.log(e)
@@ -20,7 +21,8 @@ exports.createScore = async (req,res)=>{
         let score = new Score({
             pointsA:req.body.pointsA,
             pointsB:req.body.pointsB,
-            equipe:req.body.equipe,
+            equipeA:req.body.equipeA,
+            equipeB:req.body.equipeB,
             result : req.body.result
         })
         

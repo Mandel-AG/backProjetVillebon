@@ -15,6 +15,10 @@ let mediaSchema = new mongoose.Schema({
     file: {
         type: String,
     },
+    typeMedia: {
+        type: String,
+        required: 'enter typeMedia'
+    },
     post: {
         // type: {}
         type:String,
