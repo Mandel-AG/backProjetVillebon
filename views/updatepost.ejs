@@ -11,29 +11,29 @@
 
       <form class="d-flex flex-column card w-50" method="post" action="/posts/<%= post._id %>" >
         <div class="card-body">
+          
             <div class="form-group">
               <label>Title</label>
               <input name="title" class="form-control" type="text" value="<%= post.title %>" />
             </div>
 
             <div class="form-group">
-              <label>Description</label>
-              <input name="description" class="form-control" value="<%= post.description %>" type="text" />
+              <label>Content</label>
+              <input name="content" class="form-control" value="<%= post.description %>" type="text" />
             </div>
 
-            <div class="form-group">
-              <label>Media</label>
-              <input name="media" class="form-control"  />
-            </div>
-
-            <select class='btn btn-primary list-group mb-2' name="typePost">
+            <select class='btn btn-primary list-group mb-2' name="postType">
               <option value="">--Please choose an option--</option>
               <option class='list-group-item text-body' value="equipe">Equipe</option>
               <option class='list-group-item text-body' value="actus">Actus/Events</option>
               <option class='list-group-item text-body' value="club">Club</option>
               <option class='list-group-item text-body' value="boutique">Boutique</option>
-
           </select>
+
+          <div class="form-group">
+            <label>Picture</label>
+            <input name="file" class="form-control" type='file'  />
+          </div>
           
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />

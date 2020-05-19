@@ -15,8 +15,6 @@ app.get('/',getScore)
 app.get('/editScore/:id', editScore)
 
 
-// app.get('/editScore/:id', editScore)
-
 // Create score 
 app.post('/', createScore)
 

@@ -1,0 +1,13 @@
+<% members.forEach((member) => {%>
+   <ul>
+           <li id='idElement' class='list-group-item active'><%= member._id %></li> 
+           <li class='list-group-item'>Prenom :<%= member.firstName %></li> 
+           <li class='list-group-item'>Nom : <%= member.lastName %></li> 
+           <li class='list-group-item'>Role :<%= member.role %></li> 
+           <li class='list-group-item' > Photos : <img width='100px' src="<%= member.picture %>" /> </li>
+           <li class='list-group-item'>Time :<%= member.createdAt %></li> 
+           <li class='list-group-item'>index :<%= member.index %></li> 
+           <button id='delete' type='button' class="btn btn-danger w-25" memberid= <%- member._id %> >Delete</button>
+
+   </ul>
+   <% }) %>

@@ -2,11 +2,11 @@
 <% posts.forEach(function(post){ %>
     <ul>
             <li id='idElement' class='list-group-item active'><%= post.id %></li> 
-            <li class='list-group-item'>title :<%= post.title %></li> 
-            <li class='list-group-item'>description : <%= post.description %></li> 
-            <li class='list-group-item'>type :<%= post.typePost %></li> 
-            <li class='list-group-item' > file : <img width='100px' src=<%= post.file %> /> </li>
-            <li class='list-group-item'>time :<%= post.createdAt %></li> 
+            <li class='list-group-item'>Title :<%= post.title %></li> 
+            <li class='list-group-item'>Content : <%= post.content %></li> 
+            <li class='list-group-item'>Type :<%= post.postType %></li> 
+            <li class='list-group-item' > Picture : <img width='100px' src=<%= post.picture %> /> </li>
+            <li class='list-group-item'>Time :<%= post.createdAt %></li> 
             <button id='delete' type='button' class="btn btn-danger w-25" postid= <%- post._id %> > Delete </button>
     </ul>
     <% }) %>

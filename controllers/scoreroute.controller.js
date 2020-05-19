@@ -4,9 +4,7 @@ const{getScoreQuery, updateScoreQuery, createScoreQuery, deleteScoresQuery, dele
 exports.getScore = async (req,res) => {
     try{
         const scores = await getScoreQuery();
-        console.log(scores)
-        res.json(scores)
-        // res.render('scores',{scores});
+        res.render('scores',{scores});
     }
     catch(e){
         console.log(e)
@@ -14,15 +12,13 @@ exports.getScore = async (req,res) => {
 }
 
 
-
-
 exports.createScore = async (req,res)=>{
     try{
         let score = new Score({
-            pointsA:req.body.pointsA,
-            pointsB:req.body.pointsB,
-            equipeA:req.body.equipeA,
-            equipeB:req.body.equipeB,
+            homeTeamScore:req.body.homeTeamScore,
+            opponentScore:req.body.opponentScore,
+            homeTeam:req.body.homeTeam,
+            opponent:req.body.opponent,
             result : req.body.result
         })
         

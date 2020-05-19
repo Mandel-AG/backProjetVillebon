@@ -13,11 +13,15 @@
 
         <div class="form-group" >
             <label>Score</label>
-            <p> <select name='result' value=<%= score.result %>
-                    <option value=''> Pick a result</option>
-                    <option value='Victoire'>Victoire</option>
-                    <option value='Defaite'>Defaite</option>
-                </select> Contre <input name='equipe' type="text" value= <%= score.equipe %> /> : <input type='number' name='pointsA' value= <%= score.pointsA %> class="w-25" /> - <input type='number' class="w-25" value= <%= score.pointsB %> name='pointsB' /> 
+            <p> <select name='result'>
+              <option value=''>Pick a result</option>
+              <option value='Victoire'>Victoire</option>
+              <option value='Defaite'>Defaite</option>
+              </select> de <input placeholder="nom equipe (ex :sm1, u17...)" name='homeTeam' type="text"/> 
+              Contre 
+              <input placeholder='equipe adverse' name='opponent' type="text" /> : 
+              <input type='number' name='homeTeamScore' placeholder='score villebon' class="w-25" /> - 
+              <input type='number' placeholder='score adverse' class="w-25" name='opponentScore' /> 
             </p>
         </div>
         <input type="submit" value="Submit" class="btn btn-primary" />

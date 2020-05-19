@@ -4,12 +4,12 @@
 
 
             <li id='idElement' class='list-group-item active'><%= score.id %></li> 
-            <li class='list-group-item'> equipeVillebon:<%= score.equipeA %></li>
-            <li class='list-group-item'> Villebon:<%= score.pointsA %></li>
-            <li class='list-group-item'> equipeOpponent:<%= score.equipeB %></li> 
-            <li class='list-group-item'> Opponent:<%= score.pointsB %></li> 
-            <li class='list-group-item'>result : <%= score.result %></li> 
-            <li class='list-group-item'>time :<%= score.createdAt %></li>  
+            <li class='list-group-item'> Villebon:<%= score.homeTeamScore %></li>
+            <li class='list-group-item'> Opponent:<%= score.opponentScore %></li>
+            <li class='list-group-item'> EquipeOpponent:<%= score.homeTeam %></li> 
+            <li class='list-group-item'> Opponent:<%= score.opponent %></li> 
+            <li class='list-group-item'>Result : <%= score.result %></li> 
+            <li class='list-group-item'>Time :<%= score.createdAt %></li>  
             <button id='delete' type='button' class="btn btn-danger w-25" scoreid= <%- score._id %> > Delete </button>
     </ul>
     <% }) %>

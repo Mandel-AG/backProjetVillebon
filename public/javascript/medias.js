@@ -47,7 +47,7 @@ processDelete = ()=>{
                 .then( res => {
                     mediasList.innerHTML = res.data;
                     processDelete();
-                    deletemedia();
+                    updatemedia();
                 })
         })
 })

@@ -1,44 +1,46 @@
 const Media = require('../models/mediamodel');
 const Post = require('../models/postmodel');
-const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery, deleteMediasQuery} = require('../queries/medias.queries');
+const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery} = require('../queries/medias.queries');
 
 
 
 // Create Media 
-exports.createMedia = async(req,res)=>{
+exports.createMedia = async(req,res, next)=>{
     try{
         // const post = await Post.findOne({}).exec()
+        const url = req.protocol + '://' + req.get('host');
         let media = new Media({
+            
             name:req.body.name,
+            mediaType: req.body.mediaType,
+            team:req.body.team,
             description : req.body.description,
-            equipe:req.body.equipe,
-            file:req.file.filename,
-            typeMedia: req.body.typeMedia,
-            // post: post._id,
+            picture:url + '/' + req.file.filename
         })
+        console.log(req.file,'res')
 
         const newmedia = createMediaQuery(media)
         res.redirect('/medias/add')
     }
     catch(e){
-        console.log(e)
+        next(e);
     }
 }
 
 
 // Read media
-exports.getMedias = async(req,res) => {
+exports.getMedias = async(req,res, next) => {
     try{
         const medias = await getMediasQuery()
-        res.json(medias)
-        // res.render('medias',{medias})
+        res.render('medias',{medias})
+        console.log(medias)
     }catch(e){
-        console.log(e)
+        next(e);
     }
 }
 
 // Update media
-exports.updateMedia = async(req, res)=>{
+exports.updateMedia = async(req, res, next)=>{
        try{
            const mediaid = req.params.id
            const newmedia = req.body
@@ -46,26 +48,26 @@ exports.updateMedia = async(req, res)=>{
         res.redirect('/medias');
        } 
        catch(e){
-           console.log(e)
+           next(e);
        }
 }
 
 
 // Delete plusieurs Media
-exports.deleteManyMedias = async(req,res)=>{
+exports.deleteManyMedias = async(req,res, next)=>{
     try{
         const media = await deleteMediasQuery()
         res.send(media)
     }
     catch(e){
-        console.log(e)
+        next(e);
     }
 }
 
 
 
 // Delete 1 Media
-exports.deleteMedia = async (req,res)=>{
+exports.deleteMedia = async (req,res, next)=>{
     try{
         const mediaId = req.params.id
         await deleteMediaQuery(mediaId)
@@ -73,6 +75,6 @@ exports.deleteMedia = async (req,res)=>{
         res.render('partials/media-list', {medias})
     }
     catch(e){
-        console.log(e)
+        next(e);
     }
 }

@@ -3,7 +3,7 @@ const { getPost,filteredPosts, updatePost, deleteManyPosts, deletePost, createPo
 const multer = require('multer')
 const upload = multer({ storage: multer.diskStorage({
     destination : (req, file, cb)=>{
-        cb(null, '/home/badel/Bureau/projetVillebonBD/files')
+        cb(null, '/home/badel/Bureau/projetVillebonBD/files/posts')
     },
     filename : (req, file, cb)=>{
         cb(null, Date.now() + '-' + file.originalname)

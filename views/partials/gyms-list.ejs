@@ -1,0 +1,13 @@
+<% gyms.forEach((gym) => {%>
+   <ul>
+           <li id='idElement' class='list-group-item active'><%= gym._id %></li> 
+           <li class='list-group-item'>Nom :<%= gym.name %></li> 
+           <li class='list-group-item'>Adresse : <%= gym.adress %></li> 
+           <li class='list-group-item'>Presentation :<%= gym.introdution %></li> 
+           <li class='list-group-item' > Photos : <img width='100px' src="<%= gym.picture %>" /> </li>
+           <li class='list-group-item'>Time :<%= gym.createdAt %></li> 
+           <li class='list-group-item'>index :<%= gym.index %></li> 
+           <button id='delete' type='button' class="btn btn-danger w-25" gymid= <%- gym._id %> >Delete</button>
+
+   </ul>
+   <% }) %>

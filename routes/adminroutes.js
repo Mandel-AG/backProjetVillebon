@@ -1,6 +1,6 @@
 const app = require('express').Router();
 const { createAdmin, getAdmins, updateAdmin, deleteAdmin, deleteAdmins, signOut } = require('../controllers/admin.controller')
-const { ensureAuthentification } =  require('../config/security.config')
+// const { ensureAuthentification } =  require('../config/security.config')
 
 
 // Read Admin

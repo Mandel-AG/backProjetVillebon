@@ -12,18 +12,11 @@ exports.createMediaQuery = (media) =>{
 }
 
 
-exports.updateMediaQuery = (admin) =>{
-}
-
 
 exports.deleteMediaQuery = (mediaId) =>{
     return Media.findByIdAndDelete(mediaId).exec()
 }
 
-
-exports.deleteMediasQuery = () =>{
-    return Media.deleteMany({}).exec()
-}
 
 
 exports.updateMediaQuery = (mediaId, newMedia) =>{

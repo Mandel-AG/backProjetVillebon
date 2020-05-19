@@ -8,27 +8,81 @@
 <div>
   <a href="/admins/signOut" class='btn btn-danger '> Log Out</a>
 </div>
+
   <div class="container-fluid">
+
     <h1 class='text-center card-header'>Accueil</h1>
 
-    <div class="d-flex flex-row justify-content-center border rounded element"> 
+    <div class="d-flex flex-row h-50 justify-content-center border rounded element"> 
+      <div class="d-flex" >
+
       <div class="card rubrique m-5">
         <label class="card-title text-center">Add posts</label>
         <a id='addpost' class="btn btn-dark" type="button" href="/posts/add" > Allez </a> 
       </div>
 
       <div class="card rubrique m-5">
+        <label class="card-title text-center">Ajouter Produit</label>
+        <a id='addpost' class="btn btn-dark" type="button" href="/products/add" > Allez </a> 
+      </div>
+
+      <div class="card rubrique m-5">
         <label class="card-title text-center">Add medias</label>
         <a id='addmedia' class="btn btn-dark" type="button" href="/medias/add"> Allez </a> 
       </div>
-    </div>
 
-    <div class="card rubrique m-5">
-      <label class="card-title text-center">Add score</label>
-      <a id='addscore' class="btn btn-dark" type="button" href="/score/add"> Allez </a> 
-    </div>
+      <div class="card rubrique m-5">
+        <label class="card-title text-center">Ajouter Gymnase</label>
+        <a id='addgym' class="btn btn-dark" type="button" href="/gyms/add"> Allez </a> 
+      </div>
+
+      <div class="card rubrique m-5">
+        <label class="card-title text-center">Ajouter Membre</label>
+        <a id='addgym' class="btn btn-dark" type="button" href="/members/add"> Allez </a> 
+      </div>
+
+      <div class="card rubrique m-5">
+        <label class="card-title text-center">Add club</label>
+        <a id='addpost' class="btn btn-dark" type="button" href="/clubs/add" > Allez </a> 
+      </div>
+
+      <div class="card rubrique m-5">
+        <label class="card-title text-center">Add score</label>
+        <a id='addscore' class="btn btn-dark" type="button" href="/score/add"> Allez </a> 
+      </div>
+
+      <div class="card rubrique m-5">
+        <label class="card-title text-center">Ajouter une Equipe</label>
+        <a id='addscore' class="btn btn-dark" type="button" href="/teams/add"> Allez </a> 
+      </div>
+
+      </div>
+
   </div>
+
+  <!-- Listes -->
         <div class="card-body d-flex flex-wrap justify-content-center align-items-center containerCenter">
+
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Produits</label>
+            <a id='actus' class="btn btn-primary" href="/products" type="button"> + </a> 
+          </div>
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Equipes</label>
+            <a id='actus' class="btn btn-primary" href="/teams" type="button"> + </a> 
+          </div>
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Gymnases</label>
+            <a id='gyms' class="btn btn-primary" href="/gyms" type="button"> + </a> 
+          </div>
+
+          <div class="card rubrique m-5">
+            <label class="card-title text-center">Membres</label>
+            <a id='gyms' class="btn btn-primary" href="/members" type="button"> + </a> 
+          </div>
 
           <div class="card rubrique m-5">
             <label class="card-title text-center">Actus / Evenements</label>
@@ -42,7 +96,7 @@
 
           <div class="card rubrique m-5">
             <label class="card-title text-center">Club</label>
-            <a id='club' class="btn btn-success" type="button" href="/posts/type/club" > Allez </a> 
+            <a id='club' class="btn btn-success" type="button" href="/clubs" > Allez </a> 
           </div> 
 
 

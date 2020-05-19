@@ -5,14 +5,14 @@ let postSchema = new mongoose.Schema({
         type: String,
         required: 'you must enter a title'
     },
-    description: {
+    content: {
         type: String
     },
-    typePost: {
+    postType: {
         type: String,
         require: "enter a typePost (actus, club, equipe ou boutique)"
     },
-    file: {
+    picture: {
         type: String,
         ref: 'media'
     },
@@ -29,6 +29,4 @@ postSchema.pre('save', function(){
     return Post.countDocuments().exec().then((nb)=>{this.index = nb + 1})
 })
 
-const Post = mongoose.model('Post', postSchema);
-
-module.exports = Post;
+module.exports = mongoose.model('Post', postSchema);

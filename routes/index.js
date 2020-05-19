@@ -3,20 +3,33 @@ const { findAdminPerEmail } = require('../queries/admin.queries')
 const Admin =  require('../models/adminmodel')
 const Post = require('../models/postmodel')
 const Media = require('../models/mediamodel')
+const Member = require('../models/membermodel')
+const Club = require('../models/clubmodel');
 const Score = require('../models/scoremodel');
 const postRoutes = require('./postroutes')
 const mediaRoutes = require('./mediaroutes')
 const adminRoutes = require('./adminroutes')
-const scoreRoute = require('./scoreroutes');
+const clubRoutes = require('./clubroutes');
+const productRoutes = require('./productroutes');
+const scoreRoutes = require('./scoreroutes');
+const gymRoutes = require('./gymroutes');
+const memberRoutes = require('./memberroutes');
+const teamRoutes = require('./teamroutes');
+const apiRoutes = require('./apiroutes');
 const { ensureAuthentification } = require('../config/security.config');
 const { sendMail } = require('../controllers/email.controller');
 
 
-app.use('/posts', postRoutes )
-// app.use('/medias', ensureAuthentification,  mediaRoutes)
-app.use('/medias',  mediaRoutes)
-app.use('/admins', ensureAuthentification, adminRoutes)
-app.use('/score', scoreRoute)
+app.use('/posts', ensureAuthentification, postRoutes );
+app.use('/medias', ensureAuthentification, mediaRoutes);
+app.use('/admins', ensureAuthentification, adminRoutes);
+app.use('/score', ensureAuthentification, scoreRoutes);
+app.use('/clubs', ensureAuthentification, clubRoutes);
+app.use('/products', ensureAuthentification, productRoutes);
+app.use('/gyms', ensureAuthentification, gymRoutes);
+app.use('/members', ensureAuthentification, memberRoutes);
+app.use('/teams', ensureAuthentification, teamRoutes);
+app.use('/api', apiRoutes);
 
 
 app.get('/', (req,res)=>{
@@ -24,14 +37,14 @@ app.get('/', (req,res)=>{
 })
 
 
-
-
 app.get('/accueil', ensureAuthentification, (req,res)=>{
     res.render('accueil')
 })
 
 
-app.post('/send', sendMail)
+app.post('/send', sendMail, (req, res)=>{
+        res.status(200);
+})
 
 
 
@@ -55,6 +68,8 @@ app.get('/editAdmin/:id', async(req,res)=>{
 //         console.log(e)
 //     }
 // })
+
+
 
 
 app.get('/editPost/:id', async(req,res)=>{

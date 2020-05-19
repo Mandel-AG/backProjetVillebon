@@ -1,0 +1,14 @@
+<% teams.forEach((team) => {%>
+   <ul>
+           <li id='idElement' class='list-group-item active'><%= team._id %></li> 
+           <li class='list-group-item'>Nom :<%= team.name %></li> 
+           <li class='list-group-item'>Liste des membres : <%= team.memberList %></li> 
+           <li class='list-group-item'>Horaire : <%= team.schedule %></li> 
+           <li class='list-group-item'>Prix :<%= team.price %></li> 
+           <li class='list-group-item' > Photos : <img width='100px' src="<%= team.picture %>" /> </li>
+           <li class='list-group-item'>Time :<%= team.createdAt %></li> 
+           <li class='list-group-item'>index :<%= team.index %></li> 
+           <button id='delete' type='button' class="btn btn-danger w-25" teamid= <%- team._id %> >Delete</button>
+
+   </ul>
+   <% }) %>

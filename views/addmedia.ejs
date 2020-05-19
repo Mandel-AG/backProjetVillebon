@@ -7,30 +7,51 @@
   <button id='retour' class="btn btn-dark" type="button"> Retour </button> 
   <div class="container-fluid">
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
-      <h1> Ajouter Media </h1>
+      <h1> Add Media </h1>
 
       <form class="d-flex flex-column card w-50" method="post" action="/medias" enctype="multipart/form-data" >
         <div class="card-body">
           <div class="form-group">
+
             <label>Name</label>
             <input name="name" class="form-control" type="text" />
           </div>
+
           <div class="form-group">
-            <label>Equipe</label>
-            <input name="equipe" class="form-control" type="text" />
+            <label>MediaType</label>
+            <select class='btn btn-primary list-group' name="mediaType">
+              <option value="">--Please choose an option--</option>
+              <option class='list-group-item text-body' value="product">Products</option>
+              <option class='list-group-item text-body' value="team">Team</option>
+              <option class='list-group-item text-body' value="partner">Partner</option>
+              <option class='list-group-item text-body' value="event">Events</option>
+            </select>          
           </div>
+
+          <div class="form-group">
+            <label>Team</label>
+            <select class='btn btn-primary list-group' name="team">
+              <option value="">--Please choose an option--</option>
+              <option class='list-group-item text-body' value="sm1">SM1</option>
+              <option class='list-group-item text-body' value="u20">U20</option>
+              <option class='list-group-item text-body' value="u15">U15</option>
+              <option class='list-group-item text-body' value="u13">U13</option>
+              <option class='list-group-item text-body' value="u11">U11</option>
+              <option class='list-group-item text-body' value="u9">U9</option>
+              <option class='list-group-item text-body' value="u7">U7</option>
+            </select>          
+          </div>
+
           <div class="form-group">
             <label>Description</label>
             <input name="description" class="form-control" type="text" />
           </div> 
+
           <div class="form-group">
-            <label>Type Media</label>
-            <input name="typeMedia" class="form-control" type="text" />
-          </div>
-          <div class="form-group">
-            <label>fichier</label>
+            <label>Picture</label>
             <input name="file" class="form-control" type="file" />
           </div> 
+
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />
           </div>

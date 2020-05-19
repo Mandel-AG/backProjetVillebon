@@ -8,11 +8,11 @@ window.addEventListener('DOMContentLoaded', function(){
     })
 
     processDelete();
-    updatepost();
+    updatescore();
 
 })
 
-updatepost = ()=>{
+updatescore = ()=>{
     const id = document.querySelectorAll('#idElement');
 
     for(const idElement of id){
@@ -40,7 +40,7 @@ processDelete = () =>{
                  .then( res => { 
                      scoreList.innerHTML = res.data;
                      processDelete();
-                     updatepost();
+                     updatescore();
                  })
                  .catch(e =>{ console.log(e) })
         })

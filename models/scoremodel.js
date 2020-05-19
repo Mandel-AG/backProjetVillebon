@@ -2,19 +2,19 @@ const mongoose = require('mongoose');
 
 
 let scoreSchema = new mongoose.Schema({
-    pointsA: {
+    homeTeamScore: {
         type: Number,
-        required: 'Enter a score A'
+        required: 'Enter a score Villebon'
     },
-    pointsB : {
+    opponentScore : {
         type : Number,
-        required : 'Enter a score B'
+        required : 'Enter a score opponent'
     },
-    equipeA: {
+    homeTeam: {
         type: String,
-        required: 'enter a team'
+        required: 'enter Villebon'
     }, 
-    equipeB: {
+    opponent: {
         type: String,
         required: 'enter a team'
     },

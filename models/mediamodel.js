@@ -5,28 +5,35 @@ let mediaSchema = new mongoose.Schema({
         type: String,
         required: 'you must enter a name'
     },
-    equipe: {
+    mediaType: {
         type: String,
-        required: 'enter a team or \'aucune\''
+        required: 'enter a type'
     },
-    description: {
-        type: String,
-    },
-    file: {
+    team: {
         type: String,
     },
-    typeMedia: {
-        type: String,
-        required: 'enter typeMedia'
+    description : {
+        type : String
     },
-    post: {
-        // type: {}
+    picture: {
+        type: String,
+        required:'select a picture'
+    },
+    postId: {
         type:String,
         ref: 'Post'
     },
+    index : {
+        type : Number
+    }
 
 },{
     timestamps:true
 });
+
+
+mediaSchema.pre('save', function(){
+    return Media.countDocuments().exec().then((nb)=>{this.index = nb + 1})
+})
 
 module.exports = mongoose.model('Media', mediaSchema);

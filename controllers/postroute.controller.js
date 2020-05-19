@@ -8,9 +8,8 @@ exports.getPost = async (req,res) => {
         const posts = await getPostsQuery();
         const filtre = 'Tous'
         console.log(posts)
-        res.json(posts)
         // res.render('posts',{posts, filtre:filtre });
-        // res.render('posts',{posts, filtre:filtre || {})
+        res.render('posts',{posts, filtre:filtre || {}})
     }
     catch(e){
         console.log(e)
@@ -37,23 +36,20 @@ exports.createPost = async (req,res)=>{
     try{
         let post = new Post({
             title:req.body.title,
-            description:req.body.description,
-            typePost:req.body.typePost,
-            file: req.file.filename,
+            content:req.body.content,
+            postType:req.body.postType,
+            picture: req.file.filename,
             unique:true
         })
         const media = new Media ({
-            name : req.body.title,
-            equipe : 'aucune',
-            file : req.file.filename,
-            post : post._id 
+            name: post.title,
+            mediaType: post.postType ,
+            team : 'aucune',
+            description : req.body.description,
+            picture : req.file.filename,
+            postId : post._id 
         })
         await media.save()
-        console.log(media)
-        console.log(post, 'post')
-        console.log(post.file, 'req')
-
-
        const newpost = await createPostQuery(post)
        res.redirect('/posts/add');
     }

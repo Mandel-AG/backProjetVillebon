@@ -27,7 +27,10 @@ var transporter = nodemailer.createTransport({
          from: 'testmailcbbv@gmail.com', // sender address
          to: 'a.mandel@hotmail.fr', // list of receivers
          subject: 'Subject of your email', // Subject line
-         html: req.body.message// plain text body
+         html: `Message de ${req.body.email}. /<br> 
+         Nom : ${req.body.name}. /<br> 
+         Le message est : ${req.body.message}
+         `// plain text body
        };
        console.log(req.body, 'req.body')
        
@@ -37,8 +40,9 @@ var transporter = nodemailer.createTransport({
            console.log(err)
          else
            console.log(info);
+           next()
       });
    }catch(e){
-       console.log(e)
+       next(e)
    }
 }
