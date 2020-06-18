@@ -35,7 +35,7 @@ app.use(routing)
 
 
 // mongoose.connect('mongodb://localhost/testprojet1', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
-mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/<dbname>?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/testprojet1?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 
 app.listen(3004)
 
