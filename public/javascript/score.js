@@ -19,7 +19,7 @@ updatescore = ()=>{
         idElement.addEventListener('click', function(){
             const idScore = this.textContent;
             if( confirm('Voulez-vous modifier cet element ?') ){
-                window.location = `http://localhost:3004/editScore/${idScore}`; 
+                window.location = `http://localhost:3004/score/editScore/${idScore}`; 
             }
         })
     }

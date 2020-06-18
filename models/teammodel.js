@@ -17,6 +17,9 @@ let teamSchema = new mongoose.Schema({
     picture: {
         type: String,
     },
+    games:[{
+        type:String
+    }],
     index : {
         type : Number,
     }

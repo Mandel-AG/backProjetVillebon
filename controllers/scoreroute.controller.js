@@ -44,7 +44,7 @@ exports.updateScore = async(req,res) =>{
         res.redirect('/score');
     }
     catch(e){
-        console.log(e);
+        next(e);
     }
 }
 
@@ -56,7 +56,7 @@ exports.editScore = async(req, res, next)=>{
         res.render('updatescore', {score})
     }
     catch(e){
-        console.log(e)
+        next(e);
     }
 }
 

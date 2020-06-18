@@ -1,4 +1,5 @@
 const Team = require('../models/teammodel');
+const Media = require('../models/mediamodel');
 const {getTeamsQuery, createTeamQuery, deleteTeamQuery, updateTeamQuery} = require('../queries/team.queries');
 
 
@@ -6,13 +7,16 @@ const {getTeamsQuery, createTeamQuery, deleteTeamQuery, updateTeamQuery} = requi
 // Create Team 
 exports.createTeam = async(req,res, next)=>{
     try{
+        const url = req.protocol + '://' + req.get('host');
         let team = new Team ({
             name:req.body.name,
             memberList : req.body.memberList,
             schedule : req.body.schedule,
             price : req.body.price,
-            picture:req.file.filename,
-            index:true
+            games : req.body.games,
+            picture: url + '/teams/' + req.file.filename,
+            index:true,
+            unique: true
         })
 
         const newTeam = await createTeamQuery(team)
@@ -66,7 +70,7 @@ exports.deleteTeam = async (req,res, next)=>{
 exports.editTeam = async(req, res, next)=>{
     try{ 
         const team = await Team.findById({_id :req.params.id}).exec()
-        res.render('updateTeam', {team});
+        res.render('updateteam', {team});
     }
     catch(e){
         next(e);

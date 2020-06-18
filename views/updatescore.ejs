@@ -9,22 +9,22 @@
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
       <h1> Modifier Score </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/score/<%= score._id %>" ></form>
+      <form class="d-flex flex-column card w-50" method="post" action="/score/<%= score._id %>" >
 
         <div class="form-group" >
             <label>Score</label>
             <p> <select name='result'>
-              <option value=''>Pick a result</option>
+              <option value=' <%= score.result %> '>  <%= score.result %> </option>
               <option value='Victoire'>Victoire</option>
               <option value='Defaite'>Defaite</option>
-              </select> de <input placeholder="nom equipe (ex :sm1, u17...)" name='homeTeam' type="text"/> 
+              </select> de <input placeholder="nom equipe (ex :sm1, u17...)" value=' <%= score.homeTeam %> ' name='homeTeam' type="text"/> 
               Contre 
-              <input placeholder='equipe adverse' name='opponent' type="text" /> : 
-              <input type='number' name='homeTeamScore' placeholder='score villebon' class="w-25" /> - 
-              <input type='number' placeholder='score adverse' class="w-25" name='opponentScore' /> 
+              <input placeholder='equipe adverse' name='opponent' type="text" value=' <%= score.opponent %> ' /> : 
+              <input type='number' name='homeTeamScore' value=' <%= score.homeTeamScore %> ' placeholder='score villebon' class="w-25" /> - 
+              <input type='number' placeholder='score adverse' value=' <%= score.opponentScore %> ' class="w-25" name='opponentScore' /> 
             </p>
         </div>
-        <input type="submit" value="Submit" class="btn btn-primary" />
+        <button type="submit" class="btn btn-primary"> Submit</button>
       </form>
     </div>
   </div>

@@ -1,15 +1,17 @@
 const Member = require('../models/membermodel');
+const Media = require('../models/mediamodel');
 const { getMembersQuery, createMemberQuery, deleteMemberQuery, updateMemberQuery } = require('../queries/member.queries');
 
 
 // Create Member 
 exports.createMember = async(req,res, next)=>{
     try{
+        const url = req.protocol + '://' + req.get('host');
         let member = new Member ({
             firstName:req.body.firstName,
             lastName : req.body.lastName,
             role : req.body.role,
-            picture:req.file.filename,
+            picture: url + '/members/' + req.file.filename,
             index : true,
         })
 

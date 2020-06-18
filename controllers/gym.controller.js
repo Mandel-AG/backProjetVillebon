@@ -1,4 +1,5 @@
 const Gym = require('../models/gymmodel');
+const Media = require('../models/mediamodel');
 const {getGymsQuery, createGymQuery, deleteGymQuery, updateGymQuery} = require('../queries/gym.queries');
 
 
@@ -6,12 +7,23 @@ const {getGymsQuery, createGymQuery, deleteGymQuery, updateGymQuery} = require('
 // Create Gym 
 exports.createGym = async(req,res, next)=>{
     try{
+        const url = req.protocol + '://' + req.get('host');
         let gym = new Gym ({
             name:req.body.name,
             adress : req.body.adress,
             introduction : req.body.introduction,
-            picture:req.file.filename
+            picture: url + '/gyms/' + req.file.filename
         })
+
+        let media = new Media ({
+            _id: gym._id,
+            name: gym.name,
+            mediaType: 'gym' ,
+            team : 'aucune',
+            description : gym.introduction,
+            picture : gym.picture
+        })
+        await media.save()
 
         const newGym = await createGymQuery(gym)
         res.redirect('/gyms/add');

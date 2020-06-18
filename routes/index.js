@@ -1,12 +1,11 @@
 const app = require('express').Router()
 const { findAdminPerEmail } = require('../queries/admin.queries')
 const Admin =  require('../models/adminmodel')
-const Post = require('../models/postmodel')
 const Media = require('../models/mediamodel')
 const Member = require('../models/membermodel')
 const Club = require('../models/clubmodel');
 const Score = require('../models/scoremodel');
-const postRoutes = require('./postroutes')
+const eventRoutes = require('./eventroutes')
 const mediaRoutes = require('./mediaroutes')
 const adminRoutes = require('./adminroutes')
 const clubRoutes = require('./clubroutes');
@@ -20,7 +19,7 @@ const { ensureAuthentification } = require('../config/security.config');
 const { sendMail } = require('../controllers/email.controller');
 
 
-app.use('/posts', ensureAuthentification, postRoutes );
+app.use('/events', ensureAuthentification, eventRoutes );
 app.use('/medias', ensureAuthentification, mediaRoutes);
 app.use('/admins', ensureAuthentification, adminRoutes);
 app.use('/score', ensureAuthentification, scoreRoutes);
@@ -69,18 +68,6 @@ app.get('/editAdmin/:id', async(req,res)=>{
 //     }
 // })
 
-
-
-
-app.get('/editPost/:id', async(req,res)=>{
-    try{ 
-        const post = await Post.findById({_id :req.params.id}).exec()
-        res.render('updatepost', {post})
-    }
-    catch(e){
-        console.log(e)
-    }
-})
 
 
 app.get('/editMedia/:id', async(req,res)=>{

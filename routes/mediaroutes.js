@@ -1,5 +1,5 @@
 const app = require('express').Router();
-const { createMedia, getMedias, updateMedia, deleteManyMedias, deleteMedia } = require('../controllers/mediaroute.controller')
+const { createMedia, getMedias, updateMedia, deleteMedia } = require('../controllers/mediaroute.controller')
 const multer = require('multer');
 const upload = multer({ storage: multer.diskStorage({
     destination : (req, file, cb)=>{
@@ -20,9 +20,6 @@ app.get('/',getMedias)
 
 // Update media
 app.post('/:id', updateMedia)
-
-// Delete plusieurs Media
-app.delete('/',deleteManyMedias)
 
 // Delete 1 Media
 app.delete('/:id',deleteMedia)

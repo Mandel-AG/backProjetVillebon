@@ -20,7 +20,7 @@ let clubSchema = new mongoose.Schema({
 });
 
 clubSchema.pre('save', function(){
-    return Post.countDocuments().exec().then((nb)=>{this.index = nb + 1})
+    return clubSchema.countDocuments().exec().then((nb)=>{this.index = nb + 1})
 })
 
 module.exports = mongoose.model('Club', clubSchema);

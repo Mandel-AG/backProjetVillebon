@@ -1,5 +1,4 @@
 const Media = require('../models/mediamodel');
-const Post = require('../models/postmodel');
 const {getMediasQuery, createMediaQuery, updateMediaQuery, deleteMediaQuery} = require('../queries/medias.queries');
 
 
@@ -10,17 +9,17 @@ exports.createMedia = async(req,res, next)=>{
         // const post = await Post.findOne({}).exec()
         const url = req.protocol + '://' + req.get('host');
         let media = new Media({
-            
             name:req.body.name,
             mediaType: req.body.mediaType,
             team:req.body.team,
             description : req.body.description,
-            picture:url + '/' + req.file.filename
+            picture: url + '/medias/' + req.file.filename
         })
         console.log(req.file,'res')
+        console.log(media.picture)
 
-        const newmedia = createMediaQuery(media)
-        res.redirect('/medias/add')
+        await createMediaQuery(media)
+        res.redirect('/medias/add');
     }
     catch(e){
         next(e);
@@ -50,18 +49,6 @@ exports.updateMedia = async(req, res, next)=>{
        catch(e){
            next(e);
        }
-}
-
-
-// Delete plusieurs Media
-exports.deleteManyMedias = async(req,res, next)=>{
-    try{
-        const media = await deleteMediasQuery()
-        res.send(media)
-    }
-    catch(e){
-        next(e);
-    }
 }
 
 

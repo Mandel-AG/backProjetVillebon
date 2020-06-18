@@ -19,18 +19,26 @@
 
             <div class="form-group">
                <label>memberList</label>
-               <input name="memberList" class="form-control" value="<%= team.memberList %>" type="text" />
+               <textarea name="memberList" class="form-control" value="<%= team.memberList %>" type="text">
+              </textarea>
              </div>
 
             <div class="form-group">
               <label>Horaire</label>
-              <input name="schedule" class="form-control" value="<%= team.schedule %>" type="text" />
+              <textarea name="schedule" class="form-control" value="<%= team.schedule %>" type="text">
+              </textarea>
             </div>
 
             <div class="form-group">
                <label>Prix</label>
                <input name="price" class="form-control" value="<%= team.price %>" type="text" />
              </div>
+
+             <div class="form-group">
+              <label>Liste des matchs</label>
+              <textarea name="games" class="form-control" value="<%= team.games %>" type="text">
+              </textarea>
+            </div>
 
              <div class="form-group">
                <label>Picture</label>

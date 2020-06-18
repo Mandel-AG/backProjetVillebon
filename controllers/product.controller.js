@@ -1,4 +1,5 @@
 const Product = require('../models/productmodel');
+const Media = require('../models/mediamodel');
 const { getproductsQuery, createProductQuery, deleteProductQuery, updateProductQuery } = require('../queries/products.queries');
 
 exports.getproducts = async (req,res, next) => {
@@ -14,10 +15,11 @@ exports.getproducts = async (req,res, next) => {
 
 exports.createProduct = async (req,res,next)=>{
    try{
+       const url = req.protocol + '://' + req.get('host');
        let product = new Product({
            name:req.body.name,
            description:req.body.description,
-           picture:req.file.filename
+           picture: url + '/products/' + req.file.filename
        });
        
       const newProduct = await createProductQuery(product)

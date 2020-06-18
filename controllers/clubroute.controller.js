@@ -1,4 +1,5 @@
 const Club = require('../models/clubmodel');
+const Media = require('../models/mediamodel');
 const {getClubsQuery, createClubQuery, updateClubQuery, deleteClubQuery} = require('../queries/club.queries');
 
 
@@ -6,13 +7,24 @@ const {getClubsQuery, createClubQuery, updateClubQuery, deleteClubQuery} = requi
 // Create Media 
 exports.createClub = async(req,res)=>{
     try{
+        const url = req.protocol + '://' + req.get('host');
         let club = new Club({
             name:req.body.name,
             introduction : req.body.introduction,
-            picture:req.file.filename
+            picture: url + '/club/' + req.file.filename
         })
+        const media = new Media ({
+            _id: club._id,
+            name: club.name,
+            mediaType: 'club' ,
+            team : 'aucune',
+            description : req.body.description,
+            picture : req.file.filename
+            // picture :url + '/clubs/' + req.file.filename
+        })
+        await media.save()
 
-        const newclub = createClubQuery(club)
+        await createClubQuery(club)
         res.redirect('/clubs/add')
     }
     catch(e){

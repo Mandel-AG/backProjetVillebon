@@ -7,9 +7,9 @@
   <button id='retour' class="btn btn-dark" type="button"> Retour </button> 
   <div class="container-fluid">
     <div class="d-flex flex-column align-items-center justify-content-center w-100" style="height:100vh;">
-      <h1> Add Post </h1>
+      <h1> Ajouter Evenement </h1>
 
-      <form class="d-flex flex-column card w-50" method="post" action="/posts" enctype="multipart/form-data" >
+      <form class="d-flex flex-column card w-50" method="post" action="/events" enctype="multipart/form-data" >
         <div class="card-body">
 
           <div class="form-group">
@@ -19,31 +19,24 @@
 
           <div class="form-group">
             <label>Content</label>
-            <input name="content" class="form-control" type="text" />
+            <textarea name="content" class="form-control" type="text">
+            </textarea>
           </div>
-
-          <div class="form-group ul">
-            <label>Type</label>
-            <select class='btn btn-primary list-group' name="postType">
-              <option value="">--Please choose an option--</option>
-              <option class='list-group-item text-body' value="equipe">Equipe</option>
-              <option class='list-group-item text-body' value="actus">Actus/Events</option>
-              <option class='list-group-item text-bodsingaley' value="club">Club</option>
-              <option class='list-group-item text-body' value="boutique">Boutique</option>
-              <option class='list-group-item text-body' value="evenement">Evenement</option>
-          </select>
-          <!-- <button id='ajoutMedia' > Ajouter un autre media</button> -->
-            <!-- <input name="type" class="form-control" type="text" /> -->
-          </div> 
 
           <div class="form-group">
             <label>Picture</label>
             <input name="file" class="form-control" type="file" />
           </div>
 
+          <div class="form-group">
+            <label>Date</label>
+            <input name="date" class="form-control" type="datetime-local" />
+          </div>
+
           <div>
             <input type="submit" value="Submit" class="btn btn-primary" />
           </div>
+
         </div>
       </form>
     </div>

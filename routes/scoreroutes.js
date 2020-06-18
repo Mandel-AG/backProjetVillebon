@@ -23,7 +23,7 @@ app.delete('/:id', deleteScore)
 
 
 // Update score
-app.post('/updatescore/:id', updateScore)
+app.post('/:id', updateScore)
 
 
 // Delete plusieurs Posts

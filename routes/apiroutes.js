@@ -2,7 +2,7 @@ const app = require('express').Router();
 
 const Club = require('../models/clubmodel');
 const Media = require('../models/mediamodel');
-const Post = require('../models/postmodel');
+const Event = require('../models/eventmodel');
 const Score = require('../models/scoremodel');
 const Gym = require('../models/gymmodel');
 const Team = require('../models/teammodel');
@@ -19,10 +19,10 @@ app.get('/medias',async(req,res, next) => {
    }
 })
 
-app.get('/posts',async(req,res, next) => {
+app.get('/events',async(req,res, next) => {
    try{
-       const posts = await Post.find({}).exec()
-       res.json(posts);
+       const events = await Event.find({}).exec()
+       res.json(events);
    }catch(e){
        next(e);
    }

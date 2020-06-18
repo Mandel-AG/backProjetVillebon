@@ -1,0 +1,11 @@
+<% events.forEach(function(event){ %>
+    <ul>
+            <li id='idElement' class='list-group-item active'><%= event.id %></li> 
+            <li class='list-group-item'>Title :<%= event.title %></li> 
+            <li class='list-group-item'>Content : <%= event.content %></li> 
+            <li class='list-group-item' > Picture : <img width='100px' src=<%= event.picture %> /> </li>
+            <li class='list-group-item'>Date :<%= event.date %></li>   
+            <li class='list-group-item'>Time :<%= event.createdAt %></li> 
+            <button id='delete' type='button' class="btn btn-danger w-25" eventid= <%- event._id %> > Delete </button>
+    </ul>
+    <% }) %>
