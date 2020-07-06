@@ -47,6 +47,9 @@ app.post('/send', sendMail, (req, res)=>{
 
 
 
+
+
+
 app.get('/editAdmin/:id', async(req,res)=>{
     try{ 
         const admin = await Admin.findById({_id :req.params.id}).exec()
@@ -79,6 +82,16 @@ app.get('/editMedia/:id', async(req,res)=>{
         console.log(e)
     }
 })
+
+
+
+app.get('/add',(req, res)=>{
+    res.render('addadmin')
+})
+
+
+
+
 
 
 // Login

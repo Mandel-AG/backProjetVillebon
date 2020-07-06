@@ -7,7 +7,7 @@ exports.createAdmin = async(req,res) =>{
     try{
         const body = req.body;
         const admin = await createAdminQuery(body);
-        req.login(admin)
+        // req.login(admin)
         res.status(200).redirect('/admins')
     }
     catch(e){

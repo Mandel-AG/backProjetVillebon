@@ -35,7 +35,7 @@ var transporter = nodemailer.createTransport({
        console.log(req.body, 'req.body')
        
 
-       transporter.sendMail(mailOptions, function (err, info) {
+       transporter.sendMail(mailOptions, function (err, info, next) {
          if(err)
            console.log(err)
          else

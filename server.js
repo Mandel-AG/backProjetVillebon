@@ -2,9 +2,11 @@ const express = require('express'),
 mongoose = require('mongoose'),
 cors = require('cors')
 const path = require('path')
+require('./database/index')
 const routing = require('./routes')
 const cookieParser= require('cookie-parser');
-
+const Admin = require('./models/adminmodel');
+const { userInfo } = require('os');
 
 const app = express();
 exports.app = app;
@@ -32,10 +34,15 @@ app.use(cors());
 app.use(routing)
 
 
+// const newAdmin = new Admin ({
+//   email: 'test@test.fr',
+//   password :'test'
+// })
+// newAdmin.save()
 
 
-// mongoose.connect('mongodb://localhost/testprojet1', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false});
-mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/testprojet1?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
+
+//mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/testprojet1?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 
 app.listen(3004)
 

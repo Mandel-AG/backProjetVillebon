@@ -1,5 +1,6 @@
 const app = require('express').Router();
 
+const{createAdmin} = require('../controllers/admin.controller')
 const Club = require('../models/clubmodel');
 const Media = require('../models/mediamodel');
 const Event = require('../models/eventmodel');
@@ -10,6 +11,16 @@ const Product = require('../models/productmodel');
 const Member = require('../models/membermodel');
 
 
+
+
+
+// Create Admin
+app.post('/new',createAdmin)
+
+
+
+
+ 
 app.get('/medias',async(req,res, next) => {
    try{
        const medias = await Media.find({}).exec()
