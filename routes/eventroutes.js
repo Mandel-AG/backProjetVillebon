@@ -1,15 +1,27 @@
 const app = require('express').Router()
 const { getEvent,editEvent, updateEvent, deleteEvent, createEvent } = require('../controllers/event.controller')
-const multer = require('multer')
-const upload = multer({ storage: multer.diskStorage({
-    destination : (req, file, cb)=>{
-        cb(null, '/home/badel/Bureau/projetVillebonBD/files/events')
-    },
-    filename : (req, file, cb)=>{
-        cb(null, Date.now() + '-' + file.originalname)
-    }
-    })
-});
+const multer = require('multer');
+const GridFsStorage = require('multer-gridfs-storage');
+const url = 'mongodb+srv://badel:badel@cluster0-f8esg.mongodb.net/cbbv?retryWrites=true&w=majority';
+ 
+// Create a storage object with a given configuration
+const storage = new GridFsStorage({ url });
+ 
+// Set multer storage engine to the newly created object
+const upload = multer({ storage });
+
+
+
+
+// const upload = multer({ storage: multer.diskStorage({
+//     destination : (req, file, cb)=>{
+//         cb(null, '/home/badel/Bureau/projetVillebonBD/files/events')
+//     },
+//     filename : (req, file, cb)=>{
+//         cb(null, Date.now() + '-' + file.originalname)
+//     }
+//     })
+// });
 
 
 
