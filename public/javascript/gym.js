@@ -5,8 +5,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-       window.location = 'http://localhost:3004/accueil'
-   })
+    window.history.back();
+})
 
 
    updategym()
@@ -21,7 +21,7 @@ updategym = () =>{
        idElement.addEventListener('click', function(){
            const idGym = this.textContent;
            if (confirm('Voulez-vous modifier ce Media ?') ){
-               window.location = `http://localhost:3004/gyms/editGym/${idGym}`;
+               window.location = `/gyms/editGym/${idGym}`;
            } 
        })
    }

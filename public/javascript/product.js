@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-       window.location = 'http://localhost:3004/accueil'
+    window.history.back();
    })
 
 
@@ -21,7 +21,7 @@ updateproduct = () =>{
        idElement.addEventListener('click', function(){
            const idProduct = this.textContent;
            if (confirm('Voulez-vous modifier ce Produit ?') ){
-               window.location = `http://localhost:3004/products/editProduct/${idProduct}`;
+               window.location = `/products/editProduct/${idProduct}`;
            } 
        })
    }

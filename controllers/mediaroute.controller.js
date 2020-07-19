@@ -13,7 +13,7 @@ exports.createMedia = async(req,res, next)=>{
             mediaType: req.body.mediaType,
             team:req.body.team,
             description : req.body.description,
-            picture: url + '/medias/' + req.file.filename
+            picture: url + '/api/medias/files/' + req.file.filename
         })
         console.log(req.file,'res')
         console.log(media.picture)

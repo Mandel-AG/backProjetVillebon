@@ -1,17 +1,10 @@
 window.addEventListener('DOMContentLoaded', ()=>{
 
     const retour = document.querySelector('#retour');
-
-
-
-
-
-
-
     
 
     retour.addEventListener('click', ()=>{
-        window.location = 'http://localhost:3004/accueil'
+        window.history.back();
         console.log('e')
     })
 
@@ -28,7 +21,7 @@ updatemedia = () =>{
         idElement.addEventListener('click', function(){
             const idMedia = this.textContent;
             if (confirm('Voulez-vous modifier ce Media ?') ){
-                window.location = `http://localhost:3004/editMedia/${idMedia}`;
+                window.location = `/editMedia/${idMedia}`;
             } 
         })
     }

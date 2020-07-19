@@ -5,8 +5,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-       window.location = 'http://localhost:3004/accueil'
-   })
+    window.history.back();
+})
 
 
    updatemember()
@@ -21,7 +21,7 @@ updatemember = () =>{
        idElement.addEventListener('click', function(){
            const idMember = this.textContent;
            if (confirm('Voulez-vous modifier ce Membre ?') ){
-               window.location = `http://localhost:3004/members/editMember/${idMember}`;
+               window.location = `/members/editMember/${idMember}`;
            } 
        })
    }

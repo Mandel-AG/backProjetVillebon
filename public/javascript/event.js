@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
 
     retour.addEventListener('click', ()=>{
-        window.location = 'http://localhost:3004/accueil';
+        window.history.back();
     })
 
     processDelete();
@@ -33,7 +33,7 @@ updateevent = ()=>{
         idElement.addEventListener('click', function(){
             const idEvent = this.textContent;
             if( confirm('Voulez-vous modifier cet Evenement ?') ){
-                window.location = `http://localhost:3004/events/editEvent/${idEvent}`; 
+                window.location = `/events/editEvent/${idEvent}`; 
             }
         })
     }

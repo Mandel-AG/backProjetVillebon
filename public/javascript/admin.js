@@ -9,12 +9,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 
     retour.addEventListener('click', ()=>{
-        window.location = 'http://localhost:3004/accueil'
+        window.history.back();
     })
 
 
     addadmin.addEventListener('click',()=>{
-        window.location = 'http://localhost:3004/admins/add'
+        window.location = '/admins/add'
     })
 
     processDelete();
@@ -24,7 +24,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
         adminId.addEventListener('click', function(){
             const idadmin = this.textContent;
             if ( confirm('Voulez-vous modifier cet Admin ?') ){
-                window.location = `http://localhost:3004/editAdmin/${idadmin}`; 
+                window.location = `/editAdmin/${idadmin}`; 
             }
               })
     }

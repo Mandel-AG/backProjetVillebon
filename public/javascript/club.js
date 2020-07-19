@@ -5,8 +5,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-       window.location = 'http://localhost:3004/accueil'
-       console.log('e')
+        window.history.back();
    })
 
 
@@ -22,7 +21,7 @@ updateclub = () =>{
        idElement.addEventListener('click', function(){
            const idClub = this.textContent;
            if (confirm('Voulez-vous modifier ce Club ?') ){
-               window.location = `http://localhost:3004/clubs/editClub/${idClub}`;
+               window.location = `/clubs/editClub/${idClub}`;
            } 
        })
    }

@@ -11,7 +11,7 @@ exports.createClub = async(req,res)=>{
         let club = new Club({
             name:req.body.name,
             introduction : req.body.introduction,
-            picture: url + '/club/' + req.file.filename
+            picture: url + '/api/clubs/files/' + req.file.filename
         })
         const media = new Media ({
             _id: club._id,

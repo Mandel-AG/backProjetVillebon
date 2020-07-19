@@ -3,8 +3,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
 
     retour.addEventListener('click', ()=>{
-        window.location = 'http://localhost:3004/accueil'
-        console.log('e')
+        window.history.back();
     })
 
     processDelete();
@@ -19,7 +18,7 @@ updatescore = ()=>{
         idElement.addEventListener('click', function(){
             const idScore = this.textContent;
             if( confirm('Voulez-vous modifier cet element ?') ){
-                window.location = `http://localhost:3004/score/editScore/${idScore}`; 
+                window.location = `/score/editScore/${idScore}`; 
             }
         })
     }

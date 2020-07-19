@@ -19,7 +19,7 @@ exports.createProduct = async (req,res,next)=>{
        let product = new Product({
            name:req.body.name,
            description:req.body.description,
-           picture: url + '/products/' + req.file.filename
+           picture: url + '/api/products/files/' + req.file.filename
        });
        
       const newProduct = await createProductQuery(product)

@@ -12,7 +12,7 @@ exports.createGym = async(req,res, next)=>{
             name:req.body.name,
             adress : req.body.adress,
             introduction : req.body.introduction,
-            picture: url + '/gyms/' + req.file.filename
+            picture: url + '/api/gyms/files/' + req.file.filename,
         })
 
         let media = new Media ({
@@ -21,7 +21,7 @@ exports.createGym = async(req,res, next)=>{
             mediaType: 'gym' ,
             team : 'aucune',
             description : gym.introduction,
-            picture : gym.picture
+            picture : req.file.filename
         })
         await media.save()
 

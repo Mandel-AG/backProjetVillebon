@@ -11,10 +11,17 @@ exports.createMember = async(req,res, next)=>{
             firstName:req.body.firstName,
             lastName : req.body.lastName,
             role : req.body.role,
-            picture: url + '/members/' + req.file.filename,
-            index : true,
+            picture: url + '/api/members/files/' + req.file.filename
         })
-
+        const media = new Media ({
+            _id: member._id,
+            name: member.role,
+            mediaType: 'member' ,
+            team : 'aucune',
+            description : req.body.description,
+            picture : req.file.filename
+        })
+        await media.save()
         const newMember = await createMemberQuery(member)
         res.redirect('/members/add');
     }

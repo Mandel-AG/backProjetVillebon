@@ -1,6 +1,7 @@
 const Event = require('../models/eventmodel');
 const Media = require('../models/mediamodel');
 const{getEventsQuery, updateEventQuery, createEventQuery, deleteEventQuery } = require('../queries/event.queries')
+const { deleteMediaQuery } = require('../queries/medias.queries')
 
 
 exports.getEvent = async (req,res, next) => {
@@ -35,10 +36,9 @@ exports.createEvent = async (req,res, next)=>{
             title:req.body.title,
             content:req.body.content,
             date:req.body.date,
-            picture: url + '/events/' + req.file.filename,
+            picture: url + '/api/events/files/' + req.file.filename,
         })
         console.log(event.picture)
-        console.log(req.protocol)
         const media = new Media ({
             _id: event._id,
             name: event.title,
@@ -75,6 +75,7 @@ exports. deleteEvent = async (req,res, next)=>{
     try{
         const eventId = req.params.id;
         await deleteEventQuery(eventId)
+        await deleteMediaQuery(eventId)
         const events = await getEventsQuery()
         res.render('partials/events-list', {events});
     }

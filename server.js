@@ -44,5 +44,5 @@ app.use(routing)
 
 //mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/testprojet1?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 
-app.listen(process.env.PORT);
+app.listen(process.env.PORT || 3003);
 

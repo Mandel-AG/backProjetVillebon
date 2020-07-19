@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-       window.location = 'http://localhost:3004/accueil'
+    window.history.back();
    })
 
 
@@ -21,7 +21,7 @@ updateteam = () =>{
        idElement.addEventListener('click', function(){
            const idTeam = this.textContent;
            if (confirm('Voulez-vous modifier cette Equipe ?') ){
-               window.location = `http://localhost:3004/teams/editTeam/${idTeam}`;
+               window.location = `/teams/editTeam/${idTeam}`;
            } 
        })
    }

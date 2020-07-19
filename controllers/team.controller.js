@@ -14,10 +14,19 @@ exports.createTeam = async(req,res, next)=>{
             schedule : req.body.schedule,
             price : req.body.price,
             games : req.body.games,
-            picture: url + '/teams/' + req.file.filename,
+            picture: url + '/api/teams/files/' + req.file.filename,
             index:true,
             unique: true
         })
+
+        // let media = new Media ({
+        //     _id: gym._id,
+        //     name: gym.name,
+        //     mediaType: 'gym' ,
+        //     team : 'aucune',
+        //     description : gym.introduction,
+        //     picture : req.file.filename
+        // })
 
         const newTeam = await createTeamQuery(team)
         res.redirect('/teams/add');

@@ -2,15 +2,32 @@ const app = require('express').Router()
 const { getEvent,editEvent, updateEvent, deleteEvent, createEvent } = require('../controllers/event.controller')
 const multer = require('multer');
 const GridFsStorage = require('multer-gridfs-storage');
-const url = 'mongodb+srv://badel:badel@cluster0-f8esg.mongodb.net/cbbv?retryWrites=true&w=majority';
- 
-// Create a storage object with a given configuration
-const storage = new GridFsStorage({ url });
- 
-// Set multer storage engine to the newly created object
+const crypto = require('crypto');
+const path = require('path')
+
+  
+const storage = new GridFsStorage({
+  url: 'mongodb+srv://badel:badel@cluster0-f8esg.mongodb.net/cbbv?retryWrites=true&w=majority',
+  file: (req, file) => {
+    return new Promise((resolve, reject) => {
+      crypto.randomBytes(16, (err, buf) => {
+        if (err) {
+          return reject(err);
+        }
+        const filename = buf.toString('hex') + path.extname(file.originalname);
+        const fileInfo = {
+          filename: filename,
+          bucketName: 'events'
+        };
+        resolve(fileInfo);
+      });
+    });
+  }
+});
+
 const upload = multer({ storage });
 
-
+ 
 
 
 // const upload = multer({ storage: multer.diskStorage({
