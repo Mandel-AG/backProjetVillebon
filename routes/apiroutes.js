@@ -22,14 +22,7 @@ const conn = require('../database/index.js');
 let gfs;
 conn.once('open', function () {
      gfs = Grid(conn.db);
-  // all set!
 })
-
-
-
-
-
-
 
 
 
@@ -39,17 +32,6 @@ app.post('/new',createAdmin)
 
 
 
-
-
- 
-app.get('/medias',async(req,res, next) => {
-   try{
-       const medias = await Media.find({}).exec()
-       res.json(medias);
-   }catch(e){
-       next(e);
-   }
-})
 
 // app.get('/pictures/files/:fileName',async(req,res, next) => {
 //     try{
@@ -123,6 +105,7 @@ app.get('/events/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
+            return res.status(200);
     })
 
 })
@@ -138,6 +121,8 @@ app.get('/clubs/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
+            return res.status(200);
+
     })
 
 })
@@ -153,6 +138,7 @@ app.get('/medias/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
+            return res.status(200);
     })
 })
 
@@ -168,6 +154,8 @@ app.get('/members/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
+            return res.status(200);
+
     })
 })
 
@@ -182,6 +170,7 @@ app.get('/products/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
+            return res.status(200);
     })
 
 })
@@ -198,8 +187,7 @@ app.get('/teams/files/:fileid',(req,res, next) => {
         }
             const readstream = gfs.createReadStream(file.filename);
             readstream.pipe(res);
-        
-        // return res.json(files);
+            return res.status(200);
     })
     // const medias = await Media.find({filename : req.params.filename}).exec()
 
@@ -212,6 +200,18 @@ app.get('/teams/files/:fileid',(req,res, next) => {
 
 
 // -----------
+
+
+
+app.get('/medias',async(req,res, next) => {
+    try{
+        const medias = await Media.find({}).exec()
+        res.json(medias);
+    }catch(e){
+        next(e);
+    }
+ })
+
 
 
 app.get('/events',async(req,res, next) => {

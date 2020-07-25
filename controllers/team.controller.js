@@ -10,7 +10,6 @@ exports.createTeam = async(req,res, next)=>{
         const url = req.protocol + '://' + req.get('host');
         let team = new Team ({
             name:req.body.name,
-            memberList : req.body.memberList,
             schedule : req.body.schedule,
             price : req.body.price,
             games : req.body.games,

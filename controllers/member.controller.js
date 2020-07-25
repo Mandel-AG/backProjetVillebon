@@ -7,22 +7,39 @@ const { getMembersQuery, createMemberQuery, deleteMemberQuery, updateMemberQuery
 exports.createMember = async(req,res, next)=>{
     try{
         const url = req.protocol + '://' + req.get('host');
-        let member = new Member ({
-            firstName:req.body.firstName,
-            lastName : req.body.lastName,
-            role : req.body.role,
-            picture: url + '/api/members/files/' + req.file.filename
-        })
-        const media = new Media ({
-            _id: member._id,
-            name: member.role,
-            mediaType: 'member' ,
-            team : 'aucune',
-            description : req.body.description,
-            picture : req.file.filename
-        })
-        await media.save()
-        const newMember = await createMemberQuery(member)
+        let member;
+        if(req.file){
+            member = new Member ({
+                firstName:req.body.firstName,
+                lastName : req.body.lastName,
+                role : req.body.role,
+                team : req.body.team,
+                position : req.body.position,
+                picture: url + '/api/members/files/' + req.file.filename 
+            })
+        } else{
+            member = new Member ({
+                firstName:req.body.firstName,
+                lastName : req.body.lastName,
+                role : req.body.role,
+                team : req.body.team,
+                picture: 'https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png'
+            })
+        }
+    
+        // if(member.picture){
+        //     const media = new Media ({
+        //         _id: member._id,
+        //         name: member.role,
+        //         mediaType: 'member' ,
+        //         team : 'aucune',
+        //         description : req.body.description,
+        //         picture : req.file.filename
+        //     })
+        //     await media.save()
+        // }
+       
+        await createMemberQuery(member)
         res.redirect('/members/add');
     }
     catch(e){

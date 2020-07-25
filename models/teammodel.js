@@ -5,9 +5,6 @@ let teamSchema = new mongoose.Schema({
         type: String,
         required: 'you must enter a name'
     },
-    memberList : {
-      type : String
-  },
     schedule: {
         type: String
     },

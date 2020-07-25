@@ -10,9 +10,15 @@ let memberSchema = new mongoose.Schema({
     },
     role : {
       type : String,
-  },
+    },
+    team :{
+        type:String
+    },
+    position :{
+        type:String
+    },
     picture: {
-        type: String,
+        type: String
     },
     index : {
         type : Number,

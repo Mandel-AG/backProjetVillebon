@@ -38,7 +38,6 @@ exports.createEvent = async (req,res, next)=>{
             date:req.body.date,
             picture: url + '/api/events/files/' + req.file.filename,
         })
-        console.log(event.picture)
         const media = new Media ({
             _id: event._id,
             name: event.title,

@@ -13,16 +13,16 @@ exports.createClub = async(req,res)=>{
             introduction : req.body.introduction,
             picture: url + '/api/clubs/files/' + req.file.filename
         })
-        const media = new Media ({
-            _id: club._id,
-            name: club.name,
-            mediaType: 'club' ,
-            team : 'aucune',
-            description : req.body.description,
-            picture : req.file.filename
-            // picture :url + '/clubs/' + req.file.filename
-        })
-        await media.save()
+        // const media = new Media ({
+        //     _id: club._id,
+        //     name: club.name,
+        //     mediaType: 'club' ,
+        //     team : 'aucune',
+        //     description : req.body.description,
+        //     picture : req.file.filename
+        //     // picture :url + '/clubs/' + req.file.filename
+        // })
+        // await media.save()
 
         await createClubQuery(club)
         res.redirect('/clubs/add')
