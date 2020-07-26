@@ -18,6 +18,11 @@ const apiRoutes = require('./apiroutes');
 const { ensureAuthentification } = require('../config/security.config');
 const { sendMail } = require('../controllers/email.controller');
 
+const allowHeader = (req,res, next) => {
+    res.header("Access-Control-Allow-Origin", "*")
+    next()
+}
+
 
 app.use('/events', ensureAuthentification, eventRoutes );
 app.use('/medias', ensureAuthentification, mediaRoutes);
@@ -28,7 +33,7 @@ app.use('/products', ensureAuthentification, productRoutes);
 app.use('/gyms', ensureAuthentification, gymRoutes);
 app.use('/members', ensureAuthentification, memberRoutes);
 app.use('/teams', ensureAuthentification, teamRoutes);
-app.use('/api', apiRoutes);
+app.use('/api', allowHeader, apiRoutes);
 
 
 
