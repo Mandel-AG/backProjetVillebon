@@ -35,7 +35,6 @@ app.use(express.static(path.join(__dirname,'medias')));
 app.use(express.static(path.join(__dirname,'members'))); 
 app.use(express.static(path.join(__dirname,'products'))); 
 app.use(express.static(path.join(__dirname,'teams'))); 
-
 app.use(express.urlencoded({extended: false}));
 app.use(express.json())
 app.use(routing)
