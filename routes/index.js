@@ -32,12 +32,6 @@ app.use('/api', apiRoutes);
 
 
 
-app.get('/', (req,res,next)=>{
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With");
-    res.render('login', { error : null })
-    next();
-})
 
 
 app.get('/accueil', ensureAuthentification, (req,res)=>{
