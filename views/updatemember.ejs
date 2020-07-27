@@ -22,10 +22,15 @@
               <input name="lastName" class="form-control" value="<%= member.lastName %>" type="text" />
             </div>
 
-            <div class="form-group">
-               <label>role</label>
-               <input name="role" class="form-control" value="<%= member.role %>" type="text" />
-             </div>
+               <div class="form-group">
+                <label>Role</label>
+                  <select class='btn btn-primary list-group' name="role">
+                    <option value="<%= member.role %>"><%= member.role %></option>
+                    <option class='list-group-item text-body' value="staff">Staff</option>
+                    <option class='list-group-item text-body' value="player">Player</option>
+                  </select>          
+                </div>
+              </div>
 
              <div class="form-group">
               <label>team</label>
