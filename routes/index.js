@@ -36,9 +36,9 @@ app.use('/teams', ensureAuthentification, teamRoutes);
 app.use('/api', allowHeader, apiRoutes);
 
 
-app.get('/', ()=> {
-    res.render('login')
-})
+// app.get('/', ()=> {
+//     res.render('login')
+// })
 
 
 app.get('/accueil', ensureAuthentification, (req,res)=>{
