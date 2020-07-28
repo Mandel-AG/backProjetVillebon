@@ -19,7 +19,7 @@ const { ensureAuthentification } = require('../config/security.config');
 const { sendMail } = require('../controllers/email.controller');
 
 const allowHeader = (req,res, next) => {
-    res.header("Access-Control-Allow-Origin", "*").render('login')
+    res.header("Access-Control-Allow-Origin", "*")
     next()
 }
 
@@ -36,7 +36,9 @@ app.use('/teams', ensureAuthentification, teamRoutes);
 app.use('/api', allowHeader, apiRoutes);
 
 
-
+app.get('/', ()=> {
+    res.render('login')
+})
 
 
 app.get('/accueil', ensureAuthentification, (req,res)=>{
