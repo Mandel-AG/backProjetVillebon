@@ -19,6 +19,7 @@ exports.createProduct = async (req,res,next)=>{
        let product = new Product({
            name:req.body.name,
            description:req.body.description,
+           price:req.body.price,
            picture: url + '/api/products/files/' + req.file.filename
        });
        
