@@ -15,7 +15,6 @@ app.use(cors({ origin: true }));
 
 app.get('/', (req,res,next)=>{
   res.header("Access-Control-Allow-Origin", "*");
-  res.render('login', { error : null })
   next();
 })
 

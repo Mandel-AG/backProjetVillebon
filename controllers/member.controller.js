@@ -23,6 +23,7 @@ exports.createMember = async(req,res, next)=>{
                 lastName : req.body.lastName,
                 role : req.body.role,
                 team : req.body.team,
+                position : req.body.position,
                 picture: 'https://fnadepape.org/wp-content/uploads/2018/07/avatar-1577909_960_720.png'
             })
         }
