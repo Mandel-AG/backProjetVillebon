@@ -19,7 +19,7 @@ const { ensureAuthentification } = require('../config/security.config');
 const { sendMail } = require('../controllers/email.controller');
 
 const allowHeader = (req,res, next) => {
-    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Origin", "*").render('login')
     next()
 }
 
