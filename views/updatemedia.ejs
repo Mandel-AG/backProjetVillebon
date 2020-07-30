@@ -20,7 +20,7 @@
             <div class="form-group">
               <label>Media Type</label>
               <select class='btn btn-primary list-group' name="mediaType">
-                <option value="">--Please choose an option--</option>
+                <option value="<%= media.team %>"><%- media.team %></option>
                 <option class='list-group-item text-body' value="products">products</option>
                 <option class='list-group-item text-body' value="game">game</option>
                 <option class='list-group-item text-body' value="partners">partners</option>
@@ -31,7 +31,7 @@
             <div class="form-group">
               <label>Team</label>
               <select class='btn btn-primary list-group' name="team">
-                <option value="">--Please choose an option--</option>
+                <option value="<%= media.team %>"> <%- media.team %> </option>
                 <option class='list-group-item text-body' value="sm1">SM1</option>
                 <option class='list-group-item text-body' value="u20">U20</option>
                 <option class='list-group-item text-body' value="u15">U15</option>
@@ -50,7 +50,7 @@
 
             <div class="form-group">
               <label>Picture</label>
-              <input name="file" class="form-control" type="file" />
+              <input name="file" class="form-control" value="<%= media.picture %>" type="file" />
             </div>
 
           <div>

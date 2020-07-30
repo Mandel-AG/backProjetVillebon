@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function(){
     
 
     retour.addEventListener('click', ()=>{
-        window.history.back();
+        window.location = '/accueil'
     })
 
     processDelete();

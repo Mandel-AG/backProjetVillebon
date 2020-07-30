@@ -38,15 +38,15 @@ exports.createEvent = async (req,res, next)=>{
             date:req.body.date,
             picture: url + '/api/events/files/' + req.file.filename,
         })
-        const media = new Media ({
-            _id: event._id,
-            name: event.title,
-            mediaType: 'event' ,
-            team : 'aucune',
-            description : req.body.description,
-            picture : req.file.filename
-        })
-        await media.save()
+        // const media = new Media ({
+        //     _id: event._id,
+        //     name: event.title,
+        //     mediaType: 'event' ,
+        //     team : 'aucune',
+        //     description : req.body.description,
+        //     picture : req.file.filename
+        // })
+        // await media.save()
         await createEventQuery(event)
        res.redirect('/events/add');
     }

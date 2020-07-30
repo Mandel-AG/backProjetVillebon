@@ -14,7 +14,7 @@
         <div class="form-group" >
             <label>Score</label>
             <p> <select name='result'>
-              <option value=' <%= score.result %> '>  <%= score.result %> </option>
+              <option value=' <%= score.result %> '>  <%- score.result %> </option>
               <option value='Victoire'>Victoire</option>
               <option value='Defaite'>Defaite</option>
               </select> de <input placeholder="nom equipe (ex :sm1, u17...)" value=' <%= score.homeTeam %> ' name='homeTeam' type="text"/> 

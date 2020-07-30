@@ -4,8 +4,8 @@ window.addEventListener('DOMContentLoaded', ()=>{
     
 
     retour.addEventListener('click', ()=>{
-        window.history.back();
-        console.log('e')
+        // window.location = '/accueil'
+        window.location = '/accueil'
     })
 
 

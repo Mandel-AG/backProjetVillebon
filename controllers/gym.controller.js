@@ -15,15 +15,15 @@ exports.createGym = async(req,res, next)=>{
             picture: url + '/api/gyms/files/' + req.file.filename,
         })
 
-        let media = new Media ({
-            _id: gym._id,
-            name: gym.name,
-            mediaType: 'gym' ,
-            team : 'aucune',
-            description : gym.introduction,
-            picture : req.file.filename
-        })
-        await media.save()
+        // let media = new Media ({
+        //     _id: gym._id,
+        //     name: gym.name,
+        //     mediaType: 'gym' ,
+        //     team : 'aucune',
+        //     description : gym.introduction,
+        //     picture : req.file.filename
+        // })
+        // await media.save()
 
         const newGym = await createGymQuery(gym)
         res.redirect('/gyms/add');

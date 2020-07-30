@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
    
 
    retour.addEventListener('click', ()=>{
-    window.history.back();
+    window.location = '/accueil'
 })
 
 
