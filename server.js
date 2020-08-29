@@ -40,14 +40,6 @@ app.use(express.json())
 app.use(routing)
 
 
-// const newAdmin = new Admin ({
-//   email: 'test@test.fr',
-//   password :'test'
-// })
-// newAdmin.save()
-
-
-
 //mongoose.connect('mongodb+srv://badel:@cluster0-f8esg.mongodb.net/testprojet1?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false})
 
 app.listen(process.env.PORT || 3003);

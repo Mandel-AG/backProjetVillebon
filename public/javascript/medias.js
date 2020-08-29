@@ -4,7 +4,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
     
 
     retour.addEventListener('click', ()=>{
-        // window.location = '/accueil'
         window.location = '/accueil'
     })
 

@@ -1,20 +1,5 @@
 window.addEventListener('DOMContentLoaded', function(){
-    const retour = document.querySelector('#retour');
-    let input = document.querySelector('#input')
-    
-     
-
-    // input.addEventListener('input',function(event){
-    //     try{
-    //         const input = event.target.value;
-    //         axios.get('/events/search?reqt='+ input)
-    //              .then( function(resp) {eventList.innerHTML = resp.data })
-    //     }
-    //     catch(e){
-    //         console.log(e)
-    //     }
-        
-    // })
+    const retour = document.querySelector('#retour');    
     
 
     retour.addEventListener('click', ()=>{

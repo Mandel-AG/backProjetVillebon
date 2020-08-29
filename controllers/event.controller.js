@@ -83,16 +83,6 @@ exports. deleteEvent = async (req,res, next)=>{
     }
 }
 
-// exports.eventSearch = async(req,res, next)=>{
-//     try{
-//         const eventQuery = req.query.reqt;
-//         const events = await searchEventQuery(eventQuery)
-//         res.render('partials/events-list', {events} );
-//     }
-//     catch(e){
-//         next(e);
-//     }
-// }
 
 
 

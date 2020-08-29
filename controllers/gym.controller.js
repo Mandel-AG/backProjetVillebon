@@ -73,6 +73,8 @@ exports.deleteGym = async (req,res, next)=>{
     }
 }
 
+
+
 exports.editGym = async(req, res, next)=>{
     try{ 
         const gym = await Gym.findById({_id :req.params.id}).exec()
