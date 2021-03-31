@@ -7,11 +7,13 @@ ou </br>
 Télécharger le repository</strong>
 	
 </br>
-Ensuite on installe les dépendances.
-	<em>npm install </em>
+Ensuite on installe les dépendances.</br>
+</br>
+<em>npm install </em></br>
   </br>
-	
+  
 Enfin, on peut lancer le projet.</br>
+</br>
 	<em>npm start</em>
 	
 
@@ -45,7 +47,7 @@ Amélioration du design de certaines parties.
 
 <h4>Infos</h4>
 
-Ce projet est divisé en 2 repositories : "frontProjetVillebon" (https://github.com/Mandel-AG/frontProjetVillebon.git) et "backProjectVillebon".
+Ce projet est divisé en 2 repositories : "frontProjetVillebon" (https://github.com/Mandel-AG/frontProjetVillebon) et "backProjectVillebon".
 
 
 
